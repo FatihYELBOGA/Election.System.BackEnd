@@ -8,6 +8,12 @@ namespace Election.System.BackEnd.Controllers
     [Route("[controller]")]
     public class DocumentController: ControllerBase
     {
+        [HttpGet("document-by-id/{id}")]
+        public Document GetDocumentById(int id)
+        {
+            return null;
+        }
+
         [HttpGet("all-control-status")]
         public List<ControlStatus> GetAllControlStatus()
         {
