@@ -2300,5 +2300,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Önbellek dosyası C:\\Users\\Fatih YELBOĞA\\source\\repos\\Election.System.BackEnd\\Election.System.BackEnd\\obj\\project.nuget.cache okunurken bir sorun oluştu : Kod çözülürken geçersiz veri bulundu."
+    }
+  ]
 }
