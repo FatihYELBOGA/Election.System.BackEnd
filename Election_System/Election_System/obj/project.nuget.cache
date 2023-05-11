@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "fmLbaIe13NbAe9FiK+YCTm5O0fD2JTTBTCZSLwm4osiPf9Ey+L+2qK/QlKBsevhykiPR7xw8hGuoXLpEzuLP9g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Fatih YELBOĞA\\Desktop\\GitHub\\Election.System.Backend\\Election_System\\Election_System\\Election_System.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Fatih YELBOĞA\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Fatih YELBOĞA\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Fatih YELBOĞA\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Fatih YELBOĞA\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Fatih YELBOĞA\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Fatih YELBOĞA\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
