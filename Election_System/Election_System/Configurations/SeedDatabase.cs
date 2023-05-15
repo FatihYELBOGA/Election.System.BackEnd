@@ -58,7 +58,7 @@ namespace Election_System.Configurations
                 FirstName = "Fatih",
                 LastName = "YELBOGA",
                 Gender = Gender.MALE,
-                Role = Role.SYSTEM_ADMIN
+                Role = Role.STUDENT_AFFAIR
             },
             new Administration()
             {
@@ -68,24 +68,6 @@ namespace Election_System.Configurations
                 LastName = "DEMIREL",
                 Gender = Gender.MALE,
                 Role = Role.STUDENT_AFFAIR
-            },
-            new Administration()
-            {
-                Username = "emreyelboga@std.iyte.edu.tr",
-                Password = "emre123",
-                FirstName = "Emre",
-                LastName = "YELBOGA",
-                Gender = Gender.MALE,
-                Role = Role.ADMINISTRATIVE
-            },
-            new Administration()
-            {
-                Username = "berkaybayrak@std.iyte.edu.tr",
-                Password = "berkay123",
-                FirstName = "Berkay",
-                LastName = "BAYRAK",
-                Gender = Gender.MALE,
-                Role = Role.ADMINISTRATIVE
             }
         };
 
@@ -187,7 +169,7 @@ namespace Election_System.Configurations
                 "Ogrenci Isleri - Enes DEMIREL",
                 StartDate = new DateTime(2022, 10, 01),
                 EndDate = new DateTime(2022, 10, 15),
-                Administration = administrations[1]
+                Administration = administrations[0]
             }
         };
 
@@ -197,7 +179,7 @@ namespace Election_System.Configurations
             {
                 Title = "DEPARTMAN ADAYLIGI BASVURUSU",
                 Description = "Department temsilciligi icin gondermis oldugunuz evraklar eksiktir, lutfen kontrollerinizi saglayiniz.",
-                Administration = administrations[1],
+                Administration = administrations[0],
                 PostTime = new DateTime(2022, 10, 10)
             }
         };
@@ -223,28 +205,28 @@ namespace Election_System.Configurations
                 ProcessType = ProcessType.DEPARTMENT_CANDIDACY,
                 StartDate= new DateTime(2022, 10, 01),
                 EndDate = new DateTime(2022, 10, 15),
-                administration = administrations[2]
+                administration = administrations[1]
             },
             new Process()
             {
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
                 StartDate= new DateTime(2022, 10, 15),
                 EndDate = new DateTime(2022, 10, 16),
-                administration = administrations[2]
+                administration = administrations[1]
             },
             new Process()
             {
                 ProcessType = ProcessType.FACULTY_CANDIDACY,
                 StartDate= new DateTime(2022, 10, 16),
                 EndDate = new DateTime(2022, 10, 30),
-                administration = administrations[2]
+                administration = administrations[1]
             },
             new Process()
             {
                 ProcessType = ProcessType.FACULTY_REPRESENTATIVE,
                 StartDate= new DateTime(2022, 11, 01),
                 EndDate = new DateTime(2022, 11, 01),
-                administration = administrations[2]
+                administration = administrations[1]
             }
         };
 
