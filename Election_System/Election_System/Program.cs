@@ -39,6 +39,10 @@ builder.Services.AddTransient<IAdministrationService, AdministrationService>();
 builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 builder.Services.AddTransient<IStudentService, StudentService>();
 builder.Services.AddTransient<IAuthService, AuthService>();
+builder.Services.AddTransient<ICandidateService, CandidateService>();
+builder.Services.AddTransient<ICandidateRepository, CandidateRepository>();
+builder.Services.AddTransient<IAnnouncementRepository, AnnouncementRepository>();
+builder.Services.AddTransient<IAnnouncementService, AnnouncementService>();
 
 var app = builder.Build();
 

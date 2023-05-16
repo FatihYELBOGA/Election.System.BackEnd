@@ -35,6 +35,29 @@ namespace Election_System.DTO
             };
 
         }
+        public static CandidateResponse ToCandidateResponse(Candidate candidate)
+        {
+            return new CandidateResponse()
+            {
+                Id = candidate.Id,
+                FirstName = candidate.CandidateStudent.FirstName,
+                Lastname = candidate.CandidateStudent.LastName,
+                DepartmentName = candidate.CandidateStudent.Department.Name,
+                CandidacyDate = candidate.CandidacyDate,
+                ProcessType = candidate.ProcessType
+            };
+        }
+
+        public static AnnouncementResponse ToAnnouncementResponse(Announcement announcement)
+        {
+            return new AnnouncementResponse()
+            {
+                Id = announcement.Id,
+                Title = announcement.Title,
+                Description = announcement.Description
+
+            };
+        }
 
     }
 
