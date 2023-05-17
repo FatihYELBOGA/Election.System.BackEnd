@@ -23,7 +23,6 @@ namespace Election_System.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BornDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -84,28 +83,6 @@ namespace Election_System.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "feedbacks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PostTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AdministrationId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_feedbacks", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_feedbacks_administrations_AdministrationId",
-                        column: x => x.AdministrationId,
-                        principalTable: "administrations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "processes",
                 columns: table => new
                 {
@@ -159,7 +136,6 @@ namespace Election_System.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BornDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     GPA = table.Column<float>(type: "real", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: true)
@@ -204,7 +180,6 @@ namespace Election_System.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CandidateStudentId = table.Column<int>(type: "int", nullable: true),
-                    CandidacyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ProcessType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -254,8 +229,7 @@ namespace Election_System.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     VoterStudentId = table.Column<int>(type: "int", nullable: true),
                     CandidateStudentId = table.Column<int>(type: "int", nullable: true),
-                    ProcessType = table.Column<int>(type: "int", nullable: false),
-                    VoteDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ProcessType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -270,32 +244,6 @@ namespace Election_System.Migrations
                         column: x => x.VoterStudentId,
                         principalTable: "students",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "feedbackStudents",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FeedbackId = table.Column<int>(type: "int", nullable: true),
-                    StudentId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_feedbackStudents", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_feedbackStudents_feedbacks_FeedbackId",
-                        column: x => x.FeedbackId,
-                        principalTable: "feedbacks",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_feedbackStudents_students_StudentId",
-                        column: x => x.StudentId,
-                        principalTable: "students",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -339,21 +287,6 @@ namespace Election_System.Migrations
                 column: "VoterStudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_feedbacks_AdministrationId",
-                table: "feedbacks",
-                column: "AdministrationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_feedbackStudents_FeedbackId",
-                table: "feedbackStudents",
-                column: "FeedbackId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_feedbackStudents_StudentId",
-                table: "feedbackStudents",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_processes_AdministratonId",
                 table: "processes",
                 column: "AdministratonId");
@@ -383,16 +316,10 @@ namespace Election_System.Migrations
                 name: "electionResults");
 
             migrationBuilder.DropTable(
-                name: "feedbackStudents");
-
-            migrationBuilder.DropTable(
                 name: "processes");
 
             migrationBuilder.DropTable(
                 name: "files");
-
-            migrationBuilder.DropTable(
-                name: "feedbacks");
 
             migrationBuilder.DropTable(
                 name: "students");

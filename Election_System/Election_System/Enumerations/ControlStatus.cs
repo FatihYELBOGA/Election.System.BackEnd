@@ -2,6 +2,7 @@
 {
     public enum ControlStatus
     {
+        WAITING,
         APPROVED,
         DENIED
     }

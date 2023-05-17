@@ -13,11 +13,13 @@ namespace Election_System.Controllers
         {
             _announcementService = announcementService;
         }
+
         [HttpGet("/announcements")]
         public List<AnnouncementResponse> GetAll()
         {
             return _announcementService.GetAll();
 
         }
+
     }
 }

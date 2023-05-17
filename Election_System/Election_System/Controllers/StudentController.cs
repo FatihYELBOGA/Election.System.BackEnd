@@ -1,4 +1,5 @@
-﻿using Election_System.DTO.Responses;
+﻿using Election_System.DTO.Requests;
+using Election_System.DTO.Responses;
 using Election_System.Services;
 using Microsoft.AspNetCore.Mvc;
 

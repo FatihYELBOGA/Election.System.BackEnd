@@ -6,16 +6,17 @@ namespace Election_System.Repositories
 {
     public class AnnouncementRepository : GenericRepository<Announcement>, IAnnouncementRepository
     {   
-        private readonly DataContext _dataContext;
         public AnnouncementRepository(DataContext dataContext) : base(dataContext)
         {
-            _dataContext = dataContext; 
+
         }
 
         public List<Announcement> GetAnnouncements()
         {
-            return _dataContext.announcements
-                .Where(a => DateTime.Compare(a.StartDate,DateTime.Now.Date)<0 && DateTime.Compare(a.EndDate,DateTime.Now.Date)>0).ToList();
+            return GetDataContext().announcements
+                .Where(a => DateTime.Compare(a.StartDate,DateTime.Now.Date)<0 && DateTime.Compare(a.EndDate,DateTime.Now.Date)>0).
+                ToList();
         }
+
     }
 }

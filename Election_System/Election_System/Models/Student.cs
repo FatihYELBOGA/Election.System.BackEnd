@@ -11,12 +11,10 @@ namespace Election_System.Models
         public string FirstName { get; set; }
         public string? MiddleName { get; set; }
         public string LastName { get; set; }
-        public DateTime BornDate { get; set; }
         public Gender Gender { get; set; }
         public float GPA { get; set; }
         public int? DepartmentId { get; set; }
         public Department? Department { get; set; }
-        public List<FeedbackStudent> Feedbacks { get; set; }
         public List<AttendantStudent> Attendants { get; set; }
         public List<Document> Documents { get; set; }
         public List<Candidate> Candidacies { get; set; }

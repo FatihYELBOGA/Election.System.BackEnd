@@ -17,7 +17,7 @@ namespace Election_System.Services
             List<AdministrationResponse> administrationResponses = new List<AdministrationResponse>();   
             foreach (var admin in _administrationRepository.GetAll())
             {
-                administrationResponses.Add(ConvertToDto.ToAdministrationResponse(admin));
+                administrationResponses.Add(new AdministrationResponse(admin));
             }
 
             return administrationResponses;
@@ -25,7 +25,7 @@ namespace Election_System.Services
 
         public AdministrationResponse GetById(int id)
         {
-            return ConvertToDto.ToAdministrationResponse(_administrationRepository.GetById(id));
+            return new AdministrationResponse(_administrationRepository.GetById(id));
         }
     }
 

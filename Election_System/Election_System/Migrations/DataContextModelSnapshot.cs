@@ -30,9 +30,6 @@ namespace Election_System.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("BornDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -130,9 +127,6 @@ namespace Election_System.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CandidacyDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("CandidateStudentId")
                         .HasColumnType("int");
 
@@ -214,9 +208,6 @@ namespace Election_System.Migrations
                     b.Property<int>("ProcessType")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("VoteDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("VoterStudentId")
                         .HasColumnType("int");
 
@@ -244,58 +235,6 @@ namespace Election_System.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("faculties");
-                });
-
-            modelBuilder.Entity("Election_System.Models.Feedback", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("AdministrationId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("PostTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdministrationId");
-
-                    b.ToTable("feedbacks");
-                });
-
-            modelBuilder.Entity("Election_System.Models.FeedbackStudent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("FeedbackId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FeedbackId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("feedbackStudents");
                 });
 
             modelBuilder.Entity("Election_System.Models.File", b =>
@@ -361,9 +300,6 @@ namespace Election_System.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("BornDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
@@ -474,33 +410,6 @@ namespace Election_System.Migrations
                     b.Navigation("VoterStudent");
                 });
 
-            modelBuilder.Entity("Election_System.Models.Feedback", b =>
-                {
-                    b.HasOne("Election_System.Models.Administration", "Administration")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("AdministrationId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Administration");
-                });
-
-            modelBuilder.Entity("Election_System.Models.FeedbackStudent", b =>
-                {
-                    b.HasOne("Election_System.Models.Feedback", "Feedback")
-                        .WithMany("FeedbackStudents")
-                        .HasForeignKey("FeedbackId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Election_System.Models.Student", "Student")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Feedback");
-
-                    b.Navigation("Student");
-                });
-
             modelBuilder.Entity("Election_System.Models.Process", b =>
                 {
                     b.HasOne("Election_System.Models.Administration", "administration")
@@ -525,8 +434,6 @@ namespace Election_System.Migrations
                 {
                     b.Navigation("Announcements");
 
-                    b.Navigation("Feedbacks");
-
                     b.Navigation("Processes");
                 });
 
@@ -540,11 +447,6 @@ namespace Election_System.Migrations
                     b.Navigation("Departments");
                 });
 
-            modelBuilder.Entity("Election_System.Models.Feedback", b =>
-                {
-                    b.Navigation("FeedbackStudents");
-                });
-
             modelBuilder.Entity("Election_System.Models.Student", b =>
                 {
                     b.Navigation("Attendants");
@@ -552,8 +454,6 @@ namespace Election_System.Migrations
                     b.Navigation("Candidacies");
 
                     b.Navigation("Documents");
-
-                    b.Navigation("Feedbacks");
 
                     b.Navigation("FirstStudents");
 

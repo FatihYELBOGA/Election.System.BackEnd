@@ -6,6 +6,7 @@ namespace Election_System.Repositories
     public interface ICandidateRepository : IGenericRepository<Candidate>
     {
         public List<Candidate> GetAllCandidates();
-        public List<Candidate> GetCandidatesByDepartmentId(int id);
+        public List<Candidate> GetCandidatesByDepartmentId(int departmentId);
+
     }
 }

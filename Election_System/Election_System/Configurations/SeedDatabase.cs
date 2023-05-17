@@ -8,7 +8,7 @@ namespace Election_System.Configurations
     {
         public static void Seed(DataContext dataContext)
         {
-            if (dataContext.Database.GetPendingMigrations().Count() == 0)
+            if (dataContext.Database.GetPendingMigrations().Count() == 0 && dataContext.students.Count() == 0)
             {
                 dataContext.faculties.AddRange(faculties);
                 dataContext.departments.AddRange(departments);
@@ -16,11 +16,9 @@ namespace Election_System.Configurations
                 dataContext.students.AddRange(students);
                 dataContext.candidates.AddRange(candidates);
                 dataContext.attendantStudents.AddRange(attendantStudents);
-                dataContext.announcements.AddRange(announcements);  
-                dataContext.feedbacks.AddRange(feedbacks);  
-                dataContext.feedbackStudents.AddRange(feedbackStudents);
+                dataContext.announcements.AddRange(announcements);
                 dataContext.processes.AddRange(processes);
-                dataContext.electionResults.AddRange(electionResults);  
+                dataContext.electionResults.AddRange(electionResults);
                 dataContext.documents.AddRange(documents);
 
                 dataContext.SaveChanges();
@@ -80,7 +78,7 @@ namespace Election_System.Configurations
                 FirstName = "Osman",
                 LastName = "ALTUNAY",
                 Gender = Gender.MALE,
-                Role = Role.FACULTY_REPRESENTATIVE,
+                Role = Role.DEPARTMENT_REPRESENTATIVE,
                 Department = departments[0],
                 GPA = 3.1f
             },
@@ -124,20 +122,12 @@ namespace Election_System.Configurations
             new Candidate()
             {
                 CandidateStudent = students[0],
-                CandidacyDate = new DateTime(2022, 10, 01),
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             },
             new Candidate()
             {
                 CandidateStudent = students[1],
-                CandidacyDate = new DateTime(2022, 10, 10),
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
-            },
-            new Candidate()
-            {
-                CandidateStudent = students[0],
-                CandidacyDate = new DateTime(2022, 10, 20),
-                ProcessType = ProcessType.FACULTY_REPRESENTATIVE
             }
         };
 
@@ -147,15 +137,15 @@ namespace Election_System.Configurations
             {
                 Student = students[0],
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
-                StartDate= new DateTime(2022, 10, 15),
-                EndDate= new DateTime(2023, 10, 15)
+                StartDate= new DateTime(2023, 06, 01),
+                EndDate= new DateTime(2024, 06, 01)
             },
             new AttendantStudent()
             {
                 Student = students[1],
-                ProcessType = ProcessType.FACULTY_REPRESENTATIVE,
-                StartDate= new DateTime(2022, 11, 01),
-                EndDate= new DateTime(2023, 11, 01)
+                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
+                StartDate= new DateTime(2023, 06, 01),
+                EndDate= new DateTime(2024, 06, 01)
             }
         };
 
@@ -165,36 +155,11 @@ namespace Election_System.Configurations
             {
                 Title = "DEPARTMAN ADAYLIGI SURECI BASLADI",
                 Description = 
-                "Departman adayligi icin basvuracak ogrenciler 2022-10-01'den 2022-10-15'e kadar gerekli basvuru dokumanlarini sistem uzerinden gondermelidir.\n" +
+                "Departman adayligi icin basvuracak ogrenciler 2023-05-01'den 2023-05-30'e kadar gerekli basvuru dokumanlarini sistem uzerinden gondermelidir.\n" +
                 "Ogrenci Isleri - Enes DEMIREL",
-                StartDate = new DateTime(2022, 10, 01),
-                EndDate = new DateTime(2022, 10, 15),
+                StartDate = new DateTime(2023, 05, 01),
+                EndDate = new DateTime(2023, 05, 30),
                 Administration = administrations[0]
-            }
-        };
-
-        private static Feedback[] feedbacks = new Feedback[]
-        {
-            new Feedback()
-            {
-                Title = "DEPARTMAN ADAYLIGI BASVURUSU",
-                Description = "Department temsilciligi icin gondermis oldugunuz evraklar eksiktir, lutfen kontrollerinizi saglayiniz.",
-                Administration = administrations[0],
-                PostTime = new DateTime(2022, 10, 10)
-            }
-        };
-
-        private static FeedbackStudent[] feedbackStudents = new FeedbackStudent[]
-        {
-            new FeedbackStudent()
-            {
-                Feedback = feedbacks[0],
-                Student = students[0]
-            },
-            new FeedbackStudent()
-            {
-                Feedback = feedbacks[0],
-                Student = students[1]
             }
         };
 
@@ -203,29 +168,15 @@ namespace Election_System.Configurations
             new Process()
             {
                 ProcessType = ProcessType.DEPARTMENT_CANDIDACY,
-                StartDate= new DateTime(2022, 10, 01),
-                EndDate = new DateTime(2022, 10, 15),
+                StartDate= new DateTime(2023, 05, 01),
+                EndDate = new DateTime(2023, 05, 30),
                 administration = administrations[1]
             },
             new Process()
             {
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
-                StartDate= new DateTime(2022, 10, 15),
-                EndDate = new DateTime(2022, 10, 16),
-                administration = administrations[1]
-            },
-            new Process()
-            {
-                ProcessType = ProcessType.FACULTY_CANDIDACY,
-                StartDate= new DateTime(2022, 10, 16),
-                EndDate = new DateTime(2022, 10, 30),
-                administration = administrations[1]
-            },
-            new Process()
-            {
-                ProcessType = ProcessType.FACULTY_REPRESENTATIVE,
-                StartDate= new DateTime(2022, 11, 01),
-                EndDate = new DateTime(2022, 11, 01),
+                StartDate= new DateTime(2023, 05, 30),
+                EndDate = new DateTime(2022, 05, 31),
                 administration = administrations[1]
             }
         };
@@ -236,29 +187,24 @@ namespace Election_System.Configurations
             {
                 VoterStudent = students[0],
                 CandidateStudent = students[0],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
-                VoteDate = new DateTime(2022, 10, 15)
+                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             },
             new ElectionResult()
             {
                 VoterStudent = students[2],
                 CandidateStudent = students[0],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
-                VoteDate = new DateTime(2022, 10, 15)
             },
             new ElectionResult()
             {
                 VoterStudent = students[1],
                 CandidateStudent = students[1],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
-                VoteDate = new DateTime(2022, 10, 15)
+                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             },
             new ElectionResult()
             {
                 VoterStudent = students[3],
                 CandidateStudent = students[1],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
-                VoteDate = new DateTime(2022, 10, 15)
+                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             }
         };
 
@@ -267,14 +213,14 @@ namespace Election_System.Configurations
             new Document()
             {
                 Student = students[0],
-                UploadingTime = new DateTime(2022, 10, 12),
+                UploadingTime = new DateTime(2023, 05, 15),
                 ControlStatus = ControlStatus.APPROVED,
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             },
             new Document()
             {
                 Student = students[1],
-                UploadingTime = new DateTime(2022, 10, 14),
+                UploadingTime = new DateTime(2023, 05, 25),
                 ControlStatus = ControlStatus.APPROVED,
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             }

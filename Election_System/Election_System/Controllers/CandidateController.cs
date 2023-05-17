@@ -13,15 +13,17 @@ namespace Election_System.Controllers
         {
             _candidateService = candidateService;
         }
+
         [HttpGet("/candidates")]
         public List<CandidateResponse> GetAll()
         {
             return _candidateService.GetAll();
         }
-        [HttpGet("/candidates/{id}")]
-        public List<CandidateResponse> GetCandidatesByDepartmentId(int id)
+
+        [HttpGet("/candidates/{departmentId}")]
+        public List<CandidateResponse> GetCandidatesByDepartmentId(int departmentId)
         {
-            return _candidateService.GetCandidatesByDepartmentId(id);
+            return _candidateService.GetCandidatesByDepartmentId(departmentId);
         }
 
     }

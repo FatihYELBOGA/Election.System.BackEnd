@@ -12,15 +12,18 @@ namespace Election_System.Services
         {
             _announcementRepository = announcementRepository;
         }
+
         public List<AnnouncementResponse> GetAll()
         {   
-            List<AnnouncementResponse> responses = new List<AnnouncementResponse>();
+            List<AnnouncementResponse> announcementResponses = new List<AnnouncementResponse>();
             foreach (var announcement in _announcementRepository.GetAnnouncements())
             {
-                responses.Add(ConvertToDto.ToAnnouncementResponse(announcement));
+                announcementResponses.Add(new AnnouncementResponse(announcement));
 
             }
-           return responses;
+
+           return announcementResponses;
         }
+
     }
 }

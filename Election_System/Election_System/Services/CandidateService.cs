@@ -11,26 +11,28 @@ namespace Election_System.Services
         {
             _candidateRepository = candidateRepository;
         }
+
         public List<CandidateResponse> GetAll()
         {
-            List<CandidateResponse> results = new List<CandidateResponse>();
+            List<CandidateResponse> candidateResponses = new List<CandidateResponse>();
             foreach (var candidate in _candidateRepository.GetAllCandidates())
-
             {
-                results.Add(ConvertToDto.ToCandidateResponse(candidate));
+                candidateResponses.Add(new CandidateResponse(candidate));
             }
-            return results;
+
+            return candidateResponses;
         }
 
         public List<CandidateResponse> GetCandidatesByDepartmentId(int id)
         {
-            List<CandidateResponse> results = new List<CandidateResponse>();
+            List<CandidateResponse> candidateResponses = new List<CandidateResponse>();
             foreach (var candidate in _candidateRepository.GetCandidatesByDepartmentId(id))
-
             {
-                results.Add(ConvertToDto.ToCandidateResponse(candidate));
+                candidateResponses.Add(new CandidateResponse(candidate));
             }
-            return results;
+
+            return candidateResponses;
         }
+
     }
 }

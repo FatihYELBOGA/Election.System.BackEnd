@@ -1,4 +1,5 @@
 ﻿using Election_System.Configurations;
+using Election_System.Enumerations;
 using Election_System.Generics;
 using Election_System.Models;
 using Microsoft.EntityFrameworkCore;
@@ -7,26 +8,28 @@ namespace Election_System.Repositories
 {
     public class CandidateRepository : GenericRepository<Candidate>, ICandidateRepository
     {
-        private readonly DataContext _dataContext;
         public CandidateRepository(DataContext dataContext) : base(dataContext)
         {
-            _dataContext = dataContext;
+
         }
 
         public List<Candidate> GetAllCandidates()
         {
-            return _dataContext.candidates.
-                Include(s => s.CandidateStudent).
-                    ThenInclude(d => d.Department).ToList();
+            return GetDataContext().candidates.
+                Include(c => c.CandidateStudent).
+                ThenInclude(s => s.Department).
+                ThenInclude(d => d.Faculty).
+                ToList();
         }
 
-
-        //Doğru sonuç vermiyor
-        public List<Candidate> GetCandidatesByDepartmentId(int id)
+        public List<Candidate> GetCandidatesByDepartmentId(int departmentId)
         {
-            return _dataContext.candidates.
-                Include(s => s.CandidateStudent).
-                    ThenInclude(d => d.Department).Where(d => d.CandidateStudent.Department.Id == id).ToList();
+            return GetDataContext().candidates.
+                Include(c => c.CandidateStudent).
+                ThenInclude(s => s.Department).
+                ThenInclude(d => d.Faculty).
+                Where(c => c.CandidateStudent.DepartmentId == departmentId && c.ProcessType == ProcessType.DEPARTMENT_REPRESENTATIVE).
+                ToList();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Election_System.Enumerations;
+using Election_System.Models;
 
 namespace Election_System.DTO.Responses
 {
@@ -10,8 +11,18 @@ namespace Election_System.DTO.Responses
         public string FirstName { get; set; }
         public string? MiddleName { get; set; }
         public string LastName { get; set; }
-        public DateTime BornDate { get; set; }
         public Gender? Gender { get; set; }
+
+        public AdministrationResponse(Administration administration) 
+        { 
+            Id = administration.Id;
+            Username = administration.Username;
+            Role = administration.Role;
+            FirstName = administration.FirstName;
+            MiddleName = administration.MiddleName;
+            LastName = administration.LastName;
+            Gender = administration.Gender;
+        }
 
     }
 }

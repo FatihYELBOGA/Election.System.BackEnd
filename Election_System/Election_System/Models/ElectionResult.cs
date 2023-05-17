@@ -10,7 +10,6 @@ namespace Election_System.Models
         public int? CandidateStudentId { get; set; }
         public Student? CandidateStudent { get; set; }
         public ProcessType ProcessType { get; set; }
-        public DateTime VoteDate { get; set; }
 
     }
 

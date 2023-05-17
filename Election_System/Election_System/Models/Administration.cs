@@ -11,10 +11,8 @@ namespace Election_System.Models
         public string FirstName { get; set; }
         public string? MiddleName { get; set; }
         public string LastName { get; set; }
-        public DateTime BornDate { get; set; }
         public Gender Gender { get; set; }
         public List<Announcement> Announcements { get; set; }
-        public List<Feedback> Feedbacks { get; set; }
         public List<Process> Processes { get; set; }
 
     }

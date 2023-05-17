@@ -14,8 +14,6 @@ namespace Election_System.Configurations
         public DbSet<Candidate> candidates { get; set; }
         public DbSet<AttendantStudent> attendantStudents { get; set; }
         public DbSet<Announcement> announcements { get; set; }
-        public DbSet<Feedback> feedbacks { get; set; }
-        public DbSet<FeedbackStudent> feedbackStudents { get; set; }
         public DbSet<Process> processes { get; set; }
         public DbSet<ElectionResult> electionResults { get; set; }
         public DbSet<Document> documents { get; set; }
@@ -39,24 +37,6 @@ namespace Election_System.Configurations
                 HasOne(ann => ann.Administration).
                 WithMany(a => a.Announcements).
                 HasForeignKey(ann => ann.AdministrationId).
-                OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Feedback>().
-                HasOne(f => f.Administration).
-                WithMany(a => a.Feedbacks).
-                HasForeignKey(f => f.AdministrationId).
-                OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<FeedbackStudent>().
-                HasOne(fs => fs.Feedback).
-                WithMany(f => f.FeedbackStudents).
-                HasForeignKey(fs => fs.FeedbackId).
-                OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<FeedbackStudent>().
-                HasOne(fs => fs.Student).
-                WithMany(s => s.Feedbacks).
-                HasForeignKey(fs => fs.StudentId).
                 OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<AttendantStudent>().
