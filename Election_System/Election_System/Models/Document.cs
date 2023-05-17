@@ -9,7 +9,6 @@ namespace Election_System.Models
         public File? File { get; set; }
         public int? StudentId { get; set; }
         public Student? Student { get; set; }
-        public DateTime UploadingTime { get; set; }
         public ControlStatus ControlStatus { get; set; }
         public ProcessType ProcessType { get; set; }
 

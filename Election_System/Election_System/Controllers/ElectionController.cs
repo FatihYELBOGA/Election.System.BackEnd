@@ -22,13 +22,13 @@ namespace Election_System.Controllers
             return _electionService.AddVoteForDepartmentRepresentative(vote);
         }
 
-        [HttpGet("/election/department/results/{departmentId}")]
+        [HttpGet("/election/results/{departmentId}")]
         public List<ElectionResultResponse> GetElectionResultsForDepartmentRepresentative(int departmentId)
         {
             return _electionService.GetElectionResultsForDepartmentRepresentative(departmentId);
         }
 
-        [HttpGet("/election/department/{voterId}")]
+        [HttpGet("/election/{voterId}")]
         public StudentResponse GetCandidateForDepartmentRepresentative(int voterId)
         {
             return _electionService.GetCandidateForDepartmentRepresentative(voterId);

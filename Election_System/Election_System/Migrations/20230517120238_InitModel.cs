@@ -50,7 +50,6 @@ namespace Election_System.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Extension = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
                 },
@@ -201,7 +200,6 @@ namespace Election_System.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FileId = table.Column<int>(type: "int", nullable: true),
                     StudentId = table.Column<int>(type: "int", nullable: true),
-                    UploadingTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ControlStatus = table.Column<int>(type: "int", nullable: false),
                     ProcessType = table.Column<int>(type: "int", nullable: false)
                 },

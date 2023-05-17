@@ -213,14 +213,12 @@ namespace Election_System.Configurations
             new Document()
             {
                 Student = students[0],
-                UploadingTime = new DateTime(2023, 05, 15),
                 ControlStatus = ControlStatus.APPROVED,
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             },
             new Document()
             {
                 Student = students[1],
-                UploadingTime = new DateTime(2023, 05, 25),
                 ControlStatus = ControlStatus.APPROVED,
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             }

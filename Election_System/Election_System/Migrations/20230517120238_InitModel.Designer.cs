@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Election_System.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230516180741_InitModel")]
+    [Migration("20230517120238_InitModel")]
     partial class InitModel
     {
         /// <inheritdoc />
@@ -185,9 +185,6 @@ namespace Election_System.Migrations
                     b.Property<int?>("StudentId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UploadingTime")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
                     b.HasIndex("FileId");
@@ -251,10 +248,6 @@ namespace Election_System.Migrations
                     b.Property<byte[]>("Content")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("Extension")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

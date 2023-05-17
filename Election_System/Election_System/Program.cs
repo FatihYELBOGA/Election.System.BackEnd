@@ -45,6 +45,8 @@ builder.Services.AddTransient<IAnnouncementRepository, AnnouncementRepository>()
 builder.Services.AddTransient<IAnnouncementService, AnnouncementService>();
 builder.Services.AddTransient<IElectionRepository, ElectionRepository>();
 builder.Services.AddTransient<IElectionService, ElectionService>();
+builder.Services.AddTransient<IDocumentRepository, DocumentRepository>();
+builder.Services.AddTransient<IDocumentService, DocumentService>();
 
 var app = builder.Build();
 
