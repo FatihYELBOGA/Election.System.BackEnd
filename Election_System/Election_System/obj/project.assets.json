@@ -3723,19 +3723,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Fatih YELBOĞA\\.nuget\\packages\\": {}
+    "C:\\Users\\MONSTER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Fatih YELBOĞA\\Desktop\\GitHub\\Election.System.Backend\\Election_System\\Election_System\\Election_System.csproj",
+      "projectUniqueName": "C:\\Users\\MONSTER\\Documents\\GitHub\\Election.System.Backend\\Election_System\\Election_System\\Election_System.csproj",
       "projectName": "Election_System",
-      "projectPath": "C:\\Users\\Fatih YELBOĞA\\Desktop\\GitHub\\Election.System.Backend\\Election_System\\Election_System\\Election_System.csproj",
-      "packagesPath": "C:\\Users\\Fatih YELBOĞA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Fatih YELBOĞA\\Desktop\\GitHub\\Election.System.Backend\\Election_System\\Election_System\\obj\\",
+      "projectPath": "C:\\Users\\MONSTER\\Documents\\GitHub\\Election.System.Backend\\Election_System\\Election_System\\Election_System.csproj",
+      "packagesPath": "C:\\Users\\MONSTER\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\MONSTER\\Documents\\GitHub\\Election.System.Backend\\Election_System\\Election_System\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Fatih YELBOĞA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MONSTER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3799,7 +3799,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

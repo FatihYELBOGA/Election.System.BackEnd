@@ -47,6 +47,8 @@ builder.Services.AddTransient<IElectionRepository, ElectionRepository>();
 builder.Services.AddTransient<IElectionService, ElectionService>();
 builder.Services.AddTransient<IDocumentRepository, DocumentRepository>();
 builder.Services.AddTransient<IDocumentService, DocumentService>();
+builder.Services.AddTransient<IProcessRepository, ProcessRepository>();
+builder.Services.AddTransient<IProcessService, ProcessService>();
 
 var app = builder.Build();
 
