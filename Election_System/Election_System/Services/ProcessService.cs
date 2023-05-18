@@ -19,6 +19,7 @@ namespace Election_System.Services
             {
                 processResponses.Add(new ProcessResponse(process));
             }
+
             return processResponses;
         }
 

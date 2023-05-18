@@ -11,6 +11,7 @@ namespace Election_System.Repositories
         {
 
         }
+
         public override List<Process> GetAll()
         {
             return GetDataContext().processes.
