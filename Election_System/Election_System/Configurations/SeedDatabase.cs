@@ -15,11 +15,8 @@ namespace Election_System.Configurations
                 dataContext.administrations.AddRange(administrations);
                 dataContext.students.AddRange(students);
                 dataContext.candidates.AddRange(candidates);
-                dataContext.attendantStudents.AddRange(attendantStudents);
                 dataContext.announcements.AddRange(announcements);
                 dataContext.processes.AddRange(processes);
-                dataContext.electionResults.AddRange(electionResults);
-                dataContext.documents.AddRange(documents);
 
                 dataContext.SaveChanges();
             }
@@ -117,6 +114,7 @@ namespace Election_System.Configurations
                 GPA = 3.4f
             }
         };
+
         private static Candidate[] candidates = new Candidate[]
         {
             new Candidate()
@@ -131,29 +129,11 @@ namespace Election_System.Configurations
             }
         };
 
-        private static AttendantStudent[] attendantStudents = new AttendantStudent[]
-        {
-            new AttendantStudent()
-            {
-                Student = students[0],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
-                StartDate= new DateTime(2023, 06, 01),
-                EndDate= new DateTime(2024, 06, 01)
-            },
-            new AttendantStudent()
-            {
-                Student = students[1],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
-                StartDate= new DateTime(2023, 06, 01),
-                EndDate= new DateTime(2024, 06, 01)
-            }
-        };
-
         private static Announcement[] announcements = new Announcement[]
         {
             new Announcement()
             {
-                Title = "DEPARTMAN ADAYLIGI SURECI BASLADI",
+                Title = "DEPARTMAN ADAYLIGI SURECI BASLIYOR",
                 Description = 
                 "Departman adayligi icin basvuracak ogrenciler 2023-05-01'den 2023-05-30'e kadar gerekli basvuru dokumanlarini sistem uzerinden gondermelidir.\n" +
                 "Ogrenci Isleri - Enes DEMIREL",
@@ -178,49 +158,6 @@ namespace Election_System.Configurations
                 StartDate= new DateTime(2023, 05, 30),
                 EndDate = new DateTime(2022, 05, 31),
                 administration = administrations[1]
-            }
-        };
-
-        private static ElectionResult[] electionResults = new ElectionResult[]
-        {
-            new ElectionResult()
-            {
-                VoterStudent = students[0],
-                CandidateStudent = students[0],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
-            },
-            new ElectionResult()
-            {
-                VoterStudent = students[2],
-                CandidateStudent = students[0],
-            },
-            new ElectionResult()
-            {
-                VoterStudent = students[1],
-                CandidateStudent = students[1],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
-            },
-            new ElectionResult()
-            {
-                VoterStudent = students[3],
-                CandidateStudent = students[1],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
-            }
-        };
-
-        private static Document[] documents = new Document[]
-        {
-            new Document()
-            {
-                Student = students[0],
-                ControlStatus = ControlStatus.APPROVED,
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
-            },
-            new Document()
-            {
-                Student = students[1],
-                ControlStatus = ControlStatus.APPROVED,
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             }
         };
 

@@ -15,7 +15,6 @@ namespace Election_System.Models
         public float GPA { get; set; }
         public int? DepartmentId { get; set; }
         public Department? Department { get; set; }
-        public List<AttendantStudent> Attendants { get; set; }
         public List<Document> Documents { get; set; }
         public List<Candidate> Candidacies { get; set; }
         public List<ElectionResult> FirstStudents { get; set; }

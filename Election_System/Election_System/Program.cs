@@ -5,7 +5,19 @@ using System.Text.Json.Serialization;
 using Election_System.Services;
 using Election_System.Repositories;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000", "*"); // add the allowed origins  
+                      });
+});
+
 
 // Add services to the container.
 
@@ -53,11 +65,11 @@ builder.Services.AddTransient<IProcessService, ProcessService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 SeedDatabase.Seed(app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>());
 
@@ -66,5 +78,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();

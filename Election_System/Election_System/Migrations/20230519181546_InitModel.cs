@@ -151,28 +151,6 @@ namespace Election_System.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "attendantStudents",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    StudentId = table.Column<int>(type: "int", nullable: true),
-                    ProcessType = table.Column<int>(type: "int", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_attendantStudents", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_attendantStudents_students_StudentId",
-                        column: x => x.StudentId,
-                        principalTable: "students",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "candidates",
                 columns: table => new
                 {
@@ -250,11 +228,6 @@ namespace Election_System.Migrations
                 column: "AdministrationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_attendantStudents_StudentId",
-                table: "attendantStudents",
-                column: "StudentId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_candidates_CandidateStudentId",
                 table: "candidates",
                 column: "CandidateStudentId");
@@ -300,9 +273,6 @@ namespace Election_System.Migrations
         {
             migrationBuilder.DropTable(
                 name: "announcements");
-
-            migrationBuilder.DropTable(
-                name: "attendantStudents");
 
             migrationBuilder.DropTable(
                 name: "candidates");

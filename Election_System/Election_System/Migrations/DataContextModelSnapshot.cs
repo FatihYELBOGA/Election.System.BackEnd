@@ -92,33 +92,6 @@ namespace Election_System.Migrations
                     b.ToTable("announcements");
                 });
 
-            modelBuilder.Entity("Election_System.Models.AttendantStudent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ProcessType")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("StudentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("attendantStudents");
-                });
-
             modelBuilder.Entity("Election_System.Models.Candidate", b =>
                 {
                     b.Property<int>("Id")
@@ -342,16 +315,6 @@ namespace Election_System.Migrations
                     b.Navigation("Administration");
                 });
 
-            modelBuilder.Entity("Election_System.Models.AttendantStudent", b =>
-                {
-                    b.HasOne("Election_System.Models.Student", "Student")
-                        .WithMany("Attendants")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Student");
-                });
-
             modelBuilder.Entity("Election_System.Models.Candidate", b =>
                 {
                     b.HasOne("Election_System.Models.Student", "CandidateStudent")
@@ -442,8 +405,6 @@ namespace Election_System.Migrations
 
             modelBuilder.Entity("Election_System.Models.Student", b =>
                 {
-                    b.Navigation("Attendants");
-
                     b.Navigation("Candidacies");
 
                     b.Navigation("Documents");
