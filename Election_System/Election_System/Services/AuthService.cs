@@ -18,7 +18,7 @@ namespace Election_System.Services
 
             foreach (var admin in _administrationRepository.GetAll())
             {
-                if (admin.Username.Equals(loginRequest.UserName) && admin.Password.Equals(loginRequest.Password))
+                if (admin.Username.Equals(loginRequest.Username) && admin.Password.Equals(loginRequest.Password))
                 {
                     return new LoginResponse(admin.Id);
                 }
@@ -26,7 +26,7 @@ namespace Election_System.Services
 
             foreach (var student in _studentRepository.GetAll())
             {
-                if (student.Username.Equals(loginRequest.UserName) && student.Password.Equals(loginRequest.Password))
+                if (student.Username.Equals(loginRequest.Username) && student.Password.Equals(loginRequest.Password))
                 {
                     return new LoginResponse(student.Id);
                 }
