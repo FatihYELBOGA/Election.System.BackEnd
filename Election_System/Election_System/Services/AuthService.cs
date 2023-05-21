@@ -20,7 +20,7 @@ namespace Election_System.Services
             {
                 if (admin.Username.Equals(loginRequest.Username) && admin.Password.Equals(loginRequest.Password))
                 {
-                    return new LoginResponse(admin.Id);
+                    return new LoginResponse(admin.Id, admin.Role);
                 }
             }
 
@@ -28,11 +28,11 @@ namespace Election_System.Services
             {
                 if (student.Username.Equals(loginRequest.Username) && student.Password.Equals(loginRequest.Password))
                 {
-                    return new LoginResponse(student.Id);
+                    return new LoginResponse(student.Id, student.Role);
                 }
             }
 
-            return new LoginResponse(0);
+            return new LoginResponse(0, null);
 
         }
 

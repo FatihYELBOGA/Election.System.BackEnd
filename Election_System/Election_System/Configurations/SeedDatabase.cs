@@ -14,7 +14,6 @@ namespace Election_System.Configurations
                 dataContext.departments.AddRange(departments);
                 dataContext.administrations.AddRange(administrations);
                 dataContext.students.AddRange(students);
-                dataContext.candidates.AddRange(candidates);
                 dataContext.announcements.AddRange(announcements);
                 dataContext.processes.AddRange(processes);
 
@@ -75,7 +74,7 @@ namespace Election_System.Configurations
                 FirstName = "Osman",
                 LastName = "ALTUNAY",
                 Gender = Gender.MALE,
-                Role = Role.DEPARTMENT_REPRESENTATIVE,
+                Role = Role.STUDENT,
                 Department = departments[0],
                 GPA = 3.1f
             },
@@ -87,7 +86,7 @@ namespace Election_System.Configurations
                 MiddleName = "Nur",
                 LastName = "OZAN",
                 Gender = Gender.FEMALE,
-                Role = Role.DEPARTMENT_REPRESENTATIVE,
+                Role = Role.STUDENT,
                 Department = departments[1],
                 GPA = 3.2f
             },
@@ -112,20 +111,6 @@ namespace Election_System.Configurations
                 Role = Role.STUDENT,
                 Department = departments[1],
                 GPA = 3.4f
-            }
-        };
-
-        private static Candidate[] candidates = new Candidate[]
-        {
-            new Candidate()
-            {
-                CandidateStudent = students[0],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
-            },
-            new Candidate()
-            {
-                CandidateStudent = students[1],
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             }
         };
 

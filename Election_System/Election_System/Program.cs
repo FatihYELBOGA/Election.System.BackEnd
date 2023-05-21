@@ -5,22 +5,12 @@ using System.Text.Json.Serialization;
 using Election_System.Services;
 using Election_System.Repositories;
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("http://localhost:3000", "*"); // add the allowed origins  
-                      });
-});
-
+builder.Services.AddCors();
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -71,6 +61,12 @@ var app = builder.Build();
     app.UseSwaggerUI();
 //}
 
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+);
+
 SeedDatabase.Seed(app.Services.CreateScope().ServiceProvider.GetRequiredService<DataContext>());
 
 app.UseHttpsRedirection();
@@ -78,7 +74,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
