@@ -5,7 +5,7 @@ namespace Election_System.Services
 {
     public interface IDocumentService
     {
-        public DocumentResponse AddDocumentForDepartmentRepresentative(DocumentRequest document);
+        public DocumentResponse AddDocumentForDepartmentRepresentative(DocumentRequest documentRequest);
 
     }
 

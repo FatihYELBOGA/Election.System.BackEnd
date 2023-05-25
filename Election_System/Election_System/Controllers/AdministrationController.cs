@@ -22,7 +22,7 @@ namespace Election_System.Controllers
             return _administrationService.GetAll();
         }
 
-        [HttpGet("/administration/{id}")]
+        [HttpGet("/administrations/{id}")]
         public AdministrationResponse GetById(int id)
         {
             return _administrationService.GetById(id);

@@ -16,7 +16,7 @@ namespace Election_System.Controllers
         }
 
         [HttpPost("/login")]
-        public LoginResponse Login(LoginRequest loginRequest)
+        public LoginResponse Login([FromForm] LoginRequest loginRequest)
         {
             return _authService.Login(loginRequest);
         }

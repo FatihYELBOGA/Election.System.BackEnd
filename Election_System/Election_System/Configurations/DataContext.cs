@@ -53,7 +53,7 @@ namespace Election_System.Configurations
             modelBuilder.Entity<Process>().
                 HasOne(p => p.administration).
                 WithMany(a => a.Processes).
-                HasForeignKey(p => p.AdministratonId).
+                HasForeignKey(p => p.AdministrationId).
                 OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<ElectionResult>().

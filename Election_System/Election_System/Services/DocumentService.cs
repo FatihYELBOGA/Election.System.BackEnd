@@ -14,22 +14,22 @@ namespace Election_System.Services
             _documentRepository = documentRepository;
         }
 
-        public DocumentResponse AddDocumentForDepartmentRepresentative(DocumentRequest document)
+        public DocumentResponse AddDocumentForDepartmentRepresentative(DocumentRequest documentRequest)
         {
             Models.File newFile = null;
-            long fileSize = document.File.Length;
+            long fileSize = documentRequest.File.Length;
 
             if (fileSize > 0)
             {
                 using (var stream = new MemoryStream())
                 {
-                    document.File.CopyTo(stream);
+                    documentRequest.File.CopyTo(stream);
                     var bytes = stream.ToArray();
 
                     newFile = new Models.File()
                     {
-                        Name = document.File.Name,
-                        Type = document.File.ContentType,
+                        Name = documentRequest.File.Name,
+                        Type = documentRequest.File.ContentType,
                         Content = bytes
                     };
 
@@ -39,7 +39,7 @@ namespace Election_System.Services
             Document newDocument = new Document()
             {
                 File = newFile,
-                StudentId = document.StudentId,
+                StudentId = documentRequest.StudentId,
                 ControlStatus = ControlStatus.WAITING,
                 ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE
             };

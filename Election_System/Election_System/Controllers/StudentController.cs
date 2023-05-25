@@ -22,7 +22,7 @@ namespace Election_System.Controllers
             return _studentService.GetAll();
         }
 
-        [HttpGet("/student/{id}")]
+        [HttpGet("/students/{id}")]
         public StudentResponse GetById(int id)
         {
             return _studentService.GetById(id);

@@ -8,7 +8,7 @@ namespace Election_System.Models
         public ProcessType ProcessType { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int? AdministratonId { get; set; }
+        public int? AdministrationId { get; set; }
         public Administration? administration { get; set; }
 
     }

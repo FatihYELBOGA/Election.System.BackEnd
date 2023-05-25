@@ -15,10 +15,10 @@ namespace Election_System.Controllers
             _documentService = documentService;
         }
 
-        [HttpPost("/document")]
-        public DocumentResponse AddDocumentForDepartmentRepresentative(DocumentRequest document)
+        [HttpPost("/documents")]
+        public DocumentResponse AddDocumentForDepartmentRepresentative([FromForm] DocumentRequest documentRequest)
         {
-            return _documentService.AddDocumentForDepartmentRepresentative(document);
+            return _documentService.AddDocumentForDepartmentRepresentative(documentRequest);
         }
 
     }
