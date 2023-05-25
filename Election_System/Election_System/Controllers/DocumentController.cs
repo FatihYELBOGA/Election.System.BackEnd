@@ -16,7 +16,7 @@ namespace Election_System.Controllers
         }
 
         [HttpPost("/documents")]
-        public DocumentResponse AddDocumentForDepartmentRepresentative([FromForm] DocumentRequest documentRequest)
+        public DocumentResponse AddDocumentForDepartmentRepresentative([FromBody] DocumentRequest documentRequest)
         {
             return _documentService.AddDocumentForDepartmentRepresentative(documentRequest);
         }

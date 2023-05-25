@@ -14,14 +14,29 @@ namespace Election_System.Services
         }
 
         public List<AnnouncementResponse> GetAll()
-        {   
+        {
             List<AnnouncementResponse> announcementResponses = new List<AnnouncementResponse>();
-            foreach (var announcement in _announcementRepository.GetAnnouncements())
+            foreach (var announcement in _announcementRepository.GetAll())
             {
                 announcementResponses.Add(new AnnouncementResponse(announcement));
             }
 
-           return announcementResponses;
+            return announcementResponses;
+        }
+
+        public List<AnnouncementResponse> GetActives()
+        {
+            List<AnnouncementResponse> announcementResponses = new List<AnnouncementResponse>();
+            foreach (var announcement in _announcementRepository.GetActives())
+            {
+                announcementResponses.Add(new AnnouncementResponse(announcement));
+            }
+
+            return announcementResponses;
+        }
+        public AnnouncementResponse GetById(int id)
+        {
+            return new AnnouncementResponse(_announcementRepository.GetById(id));
         }
 
         public AnnouncementResponse Add(AnnouncementRequest announcementRequest)
@@ -71,5 +86,6 @@ namespace Election_System.Services
                 return false;
             }
         }
+
     }
 }

@@ -15,20 +15,32 @@ namespace Election_System.Controllers
             _announcementService = announcementService;
         }
 
-        [HttpGet("/announcements")]
+        [HttpGet("/announcements/")]
         public List<AnnouncementResponse> GetAll()
         {
             return _announcementService.GetAll();
         }
 
+        [HttpGet("/announcements/active")]
+        public List<AnnouncementResponse> GetActives()
+        {
+            return _announcementService.GetActives();
+        }
+
+        [HttpGet("/announcements/{id}")]
+        public AnnouncementResponse GetById(int id)
+        {
+            return _announcementService.GetById(id);
+        }
+
         [HttpPost("/announcements")]
-        public AnnouncementResponse Add([FromForm] AnnouncementRequest announcementRequest)
+        public AnnouncementResponse Add([FromBody] AnnouncementRequest announcementRequest)
         {
             return _announcementService.Add(announcementRequest);
         }
 
         [HttpPut("/announcements/{id}")]
-        public AnnouncementResponse Update(int id, [FromForm] AnnouncementRequest announcementRequest)
+        public AnnouncementResponse Update(int id, [FromBody] AnnouncementRequest announcementRequest)
         {
             return _announcementService.Update(id, announcementRequest);
         }

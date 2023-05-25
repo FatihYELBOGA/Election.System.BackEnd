@@ -14,10 +14,21 @@ namespace Election_System.Services
             _processRepository = processRepository;
         }
 
-        public List<ProcessResponse> GetAllProcesses()
+        public List<ProcessResponse> GetAll()
         {
             List<ProcessResponse> processResponses = new List<ProcessResponse>();
-            foreach(var process in _processRepository.GetAll())
+            foreach (var process in _processRepository.GetAll())
+            {
+                processResponses.Add(new ProcessResponse(process));
+            }
+
+            return processResponses;
+        }
+
+        public List<ProcessResponse> GetActives()
+        {
+            List<ProcessResponse> processResponses = new List<ProcessResponse>();
+            foreach (var process in _processRepository.GetActives())
             {
                 processResponses.Add(new ProcessResponse(process));
             }

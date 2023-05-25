@@ -17,19 +17,25 @@ namespace Election_System.Controllers
         }
 
         [HttpGet("/processes")]
-        public List<ProcessResponse> GetAllProcesses() 
+        public List<ProcessResponse> GetAll() 
         { 
-            return _processService.GetAllProcesses();
+            return _processService.GetAll();
+        }
+
+        [HttpGet("/processes/active")]
+        public List<ProcessResponse> GetActives()
+        {
+            return _processService.GetActives();
         }
 
         [HttpPost("/processes")]
-        public ProcessResponse Add([FromForm] ProcessRequest processRequest)
+        public ProcessResponse Add([FromBody] ProcessRequest processRequest)
         {
             return _processService.Add(processRequest);
         }
 
         [HttpPut("/processes/{id}")]
-        public ProcessResponse Update(int id, [FromForm] ProcessRequest processRequest)
+        public ProcessResponse Update(int id, [FromBody] ProcessRequest processRequest)
         {
             return _processService.Update(id, processRequest);
         }

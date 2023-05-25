@@ -5,6 +5,7 @@ namespace Election_System.Repositories
 {
     public interface IProcessRepository : IGenericRepository<Process>
     {
+        public List<Process> GetActives();
 
     }
 

@@ -12,7 +12,7 @@ namespace Election_System.Repositories
 
         }
 
-        public override List<Process> GetAll()
+        public List<Process> GetActives()
         {
             return GetDataContext().processes.
                 Where(a => DateTime.Compare(a.StartDate, DateTime.Now.Date) < 0 && DateTime.Compare(a.EndDate, DateTime.Now.Date) > 0).

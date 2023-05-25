@@ -5,7 +5,7 @@ namespace Election_System.Repositories
 {
     public interface IAnnouncementRepository : IGenericRepository<Announcement>
     {
-       public List<Announcement> GetAnnouncements();
+       public List<Announcement> GetActives();
 
     }
 
