@@ -1,4 +1,5 @@
-﻿using Election_System.DTO.Responses;
+﻿using Election_System.DTO.Requests;
+using Election_System.DTO.Responses;
 
 namespace Election_System.Services
 {
@@ -6,6 +7,7 @@ namespace Election_System.Services
     {
         public List<AdministrationResponse> GetAll();
         public AdministrationResponse GetById(int id);
+        public StudentResponse UpdateStudentRole(StudentRoleChangingRequest changingRequest);
 
     }
 

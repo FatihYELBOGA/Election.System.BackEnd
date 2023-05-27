@@ -28,5 +28,12 @@ namespace Election_System.Controllers
             return _administrationService.GetById(id);
         }
 
+        [HttpPost("/administrations/authorization")]
+        public StudentResponse UpdateStudentRole(StudentRoleChangingRequest changingRequest)
+        {
+            return _administrationService.UpdateStudentRole(changingRequest);
+        }
+
+
     }
 }

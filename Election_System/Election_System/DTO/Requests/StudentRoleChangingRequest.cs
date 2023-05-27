@@ -2,10 +2,10 @@
 
 namespace Election_System.DTO.Requests
 {
-    public class DocumentRequest
+    public class StudentRoleChangingRequest
     {
         public int StudentId { get; set; }
-        public IFormFile File { get; set; }
+        public Role Role { get; set; }
 
     }
 
