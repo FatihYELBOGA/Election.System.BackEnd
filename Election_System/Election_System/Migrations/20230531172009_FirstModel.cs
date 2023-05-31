@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Election_System.Migrations
 {
     /// <inheritdoc />
-    public partial class InitModel : Migration
+    public partial class FirstModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,7 +51,8 @@ namespace Election_System.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Content = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
+                    Content = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    DocumentId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,14 +91,14 @@ namespace Election_System.Migrations
                     ProcessType = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AdministratonId = table.Column<int>(type: "int", nullable: true)
+                    AdministrationId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_processes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_processes_administrations_AdministratonId",
-                        column: x => x.AdministratonId,
+                        name: "FK_processes_administrations_AdministrationId",
+                        column: x => x.AdministrationId,
                         principalTable: "administrations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
@@ -179,7 +180,8 @@ namespace Election_System.Migrations
                     FileId = table.Column<int>(type: "int", nullable: true),
                     StudentId = table.Column<int>(type: "int", nullable: true),
                     ControlStatus = table.Column<int>(type: "int", nullable: false),
-                    ProcessType = table.Column<int>(type: "int", nullable: false)
+                    ProcessType = table.Column<int>(type: "int", nullable: false),
+                    DocumentType = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -188,7 +190,8 @@ namespace Election_System.Migrations
                         name: "FK_documents_files_FileId",
                         column: x => x.FileId,
                         principalTable: "files",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_documents_students_StudentId",
                         column: x => x.StudentId,
@@ -240,7 +243,9 @@ namespace Election_System.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_documents_FileId",
                 table: "documents",
-                column: "FileId");
+                column: "FileId",
+                unique: true,
+                filter: "[FileId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_documents_StudentId",
@@ -258,9 +263,9 @@ namespace Election_System.Migrations
                 column: "VoterStudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_processes_AdministratonId",
+                name: "IX_processes_AdministrationId",
                 table: "processes",
-                column: "AdministratonId");
+                column: "AdministrationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_students_DepartmentId",

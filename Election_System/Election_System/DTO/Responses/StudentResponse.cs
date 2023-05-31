@@ -25,7 +25,11 @@ namespace Election_System.DTO.Responses
             LastName = student.LastName;
             Gender = student.Gender;
             GPA = student. GPA;
-            Department = new DepartmentResponse(student.Department);
+            if(student.Department != null)
+            {
+                Department = new DepartmentResponse(student.Department);
+            }
+
         }
 
     }

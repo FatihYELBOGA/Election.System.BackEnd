@@ -8,7 +8,7 @@ using Election_System.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddCors();
+builder.Services.AddCors(); 
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -51,6 +51,7 @@ builder.Services.AddTransient<IDocumentRepository, DocumentRepository>();
 builder.Services.AddTransient<IDocumentService, DocumentService>();
 builder.Services.AddTransient<IProcessRepository, ProcessRepository>();
 builder.Services.AddTransient<IProcessService, ProcessService>();
+builder.Services.AddTransient<IFileRepository, FileRepository>();
 
 var app = builder.Build();
 

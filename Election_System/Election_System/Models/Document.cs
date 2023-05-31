@@ -11,6 +11,7 @@ namespace Election_System.Models
         public Student? Student { get; set; }
         public ControlStatus ControlStatus { get; set; }
         public ProcessType ProcessType { get; set; }
+        public DocumentType DocumentType { get; set; }
 
     }
 

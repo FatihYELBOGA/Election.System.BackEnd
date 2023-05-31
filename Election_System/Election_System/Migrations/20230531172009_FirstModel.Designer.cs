@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Election_System.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230525150532_ProcessColumnNameChanging")]
-    partial class ProcessColumnNameChanging
+    [Migration("20230531172009_FirstModel")]
+    partial class FirstModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -149,6 +149,9 @@ namespace Election_System.Migrations
                     b.Property<int>("ControlStatus")
                         .HasColumnType("int");
 
+                    b.Property<int>("DocumentType")
+                        .HasColumnType("int");
+
                     b.Property<int?>("FileId")
                         .HasColumnType("int");
 
@@ -160,7 +163,9 @@ namespace Election_System.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FileId");
+                    b.HasIndex("FileId")
+                        .IsUnique()
+                        .HasFilter("[FileId] IS NOT NULL");
 
                     b.HasIndex("StudentId");
 
@@ -221,6 +226,9 @@ namespace Election_System.Migrations
                     b.Property<byte[]>("Content")
                         .IsRequired()
                         .HasColumnType("varbinary(max)");
+
+                    b.Property<int?>("DocumentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -341,8 +349,9 @@ namespace Election_System.Migrations
             modelBuilder.Entity("Election_System.Models.Document", b =>
                 {
                     b.HasOne("Election_System.Models.File", "File")
-                        .WithMany()
-                        .HasForeignKey("FileId");
+                        .WithOne("Document")
+                        .HasForeignKey("Election_System.Models.Document", "FileId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Election_System.Models.Student", "Student")
                         .WithMany("Documents")
@@ -404,6 +413,11 @@ namespace Election_System.Migrations
             modelBuilder.Entity("Election_System.Models.Faculty", b =>
                 {
                     b.Navigation("Departments");
+                });
+
+            modelBuilder.Entity("Election_System.Models.File", b =>
+                {
+                    b.Navigation("Document");
                 });
 
             modelBuilder.Entity("Election_System.Models.Student", b =>

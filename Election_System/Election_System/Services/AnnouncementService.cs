@@ -41,8 +41,8 @@ namespace Election_System.Services
 
         public AnnouncementResponse Add(AnnouncementRequest announcementRequest)
         {
-            string[] startDate = announcementRequest.StartDate.Split(',');
-            string[] endDate = announcementRequest.EndDate.Split(',');
+            string[] startDate = announcementRequest.StartDate.Split('-');
+            string[] endDate = announcementRequest.EndDate.Split('-');
 
             Announcement addedAnnouncement = _announcementRepository.Add(new Announcement()
             {
@@ -58,8 +58,8 @@ namespace Election_System.Services
 
         public AnnouncementResponse Update(int id, AnnouncementRequest announcementRequest)
         {
-            string[] startDate = announcementRequest.StartDate.Split(',');
-            string[] endDate = announcementRequest.EndDate.Split(',');
+            string[] startDate = announcementRequest.StartDate.Split('-');
+            string[] endDate = announcementRequest.EndDate.Split('-');
 
             Announcement updatedAnnouncement = new Announcement()
             {

@@ -14,8 +14,6 @@ namespace Election_System.Configurations
                 dataContext.departments.AddRange(departments);
                 dataContext.administrations.AddRange(administrations);
                 dataContext.students.AddRange(students);
-                dataContext.announcements.AddRange(announcements);
-                dataContext.processes.AddRange(processes);
 
                 dataContext.SaveChanges();
             }
@@ -111,38 +109,6 @@ namespace Election_System.Configurations
                 Role = Role.STUDENT,
                 Department = departments[1],
                 GPA = 3.4f
-            }
-        };
-
-        private static Announcement[] announcements = new Announcement[]
-        {
-            new Announcement()
-            {
-                Title = "DEPARTMAN ADAYLIGI SURECI BASLIYOR",
-                Description = 
-                "Departman adayligi icin basvuracak ogrenciler 2023-05-01'den 2023-05-30'e kadar gerekli basvuru dokumanlarini sistem uzerinden gondermelidir.\n" +
-                "Ogrenci Isleri - Enes DEMIREL",
-                StartDate = new DateTime(2023, 05, 01),
-                EndDate = new DateTime(2023, 05, 30),
-                Administration = administrations[0]
-            }
-        };
-
-        private static Process[] processes = new Process[]
-        {
-            new Process()
-            {
-                ProcessType = ProcessType.DEPARTMENT_CANDIDACY,
-                StartDate= new DateTime(2023, 05, 01),
-                EndDate = new DateTime(2023, 05, 30),
-                administration = administrations[1]
-            },
-            new Process()
-            {
-                ProcessType = ProcessType.DEPARTMENT_REPRESENTATIVE,
-                StartDate= new DateTime(2023, 05, 30),
-                EndDate = new DateTime(2022, 05, 31),
-                administration = administrations[1]
             }
         };
 

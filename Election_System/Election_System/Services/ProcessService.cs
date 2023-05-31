@@ -38,8 +38,8 @@ namespace Election_System.Services
 
         public ProcessResponse Add(ProcessRequest processRequest)
         {
-            string[] startDate = processRequest.StartDate.Split(',');
-            string[] endDate = processRequest.EndDate.Split(',');
+            string[] startDate = processRequest.StartDate.Split('-');
+            string[] endDate = processRequest.EndDate.Split('-');
 
             Process addedProcess = _processRepository.Add(new Process()
             {
@@ -54,8 +54,8 @@ namespace Election_System.Services
 
         public ProcessResponse Update(int id, ProcessRequest processRequest)
         {
-            string[] startDate = processRequest.StartDate.Split(',');
-            string[] endDate = processRequest.EndDate.Split(',');
+            string[] startDate = processRequest.StartDate.Split('-');
+            string[] endDate = processRequest.EndDate.Split('-');
 
             Process updatedProcess = new Process()
             {

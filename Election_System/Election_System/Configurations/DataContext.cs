@@ -44,6 +44,12 @@ namespace Election_System.Configurations
                 HasForeignKey(d => d.StudentId).
                 OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Document>().
+                HasOne(d => d.File).
+                WithOne(f => f.Document).
+                HasForeignKey<Document>(d => d.FileId).
+                OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Candidate>().
                 HasOne(c => c.CandidateStudent).
                 WithMany(s => s.Candidacies).
