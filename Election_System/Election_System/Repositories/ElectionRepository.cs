@@ -14,7 +14,28 @@ namespace Election_System.Repositories
 
         }
 
-        public ElectionResult GetElectionResultForDepartmentRepresenatative(int voterId)
+        public List<ElectionResultResponse> GetElectionResultsForDepartmentRepresentative(int departmentId)
+        {
+            var query = GetDataContext().electionResults.
+                Include(es => es.CandidateStudent).
+                Where(es => es.CandidateStudent.DepartmentId == departmentId).
+                GroupBy(es => es.CandidateStudentId).
+                Select(g => new { candidateStudentId = g.Key, NumberOfVotes = g.Count() });
+
+            List<ElectionResultResponse> electionResults = new List<ElectionResultResponse>();
+            foreach (var q in query)
+            {
+                electionResults.Add(new ElectionResultResponse()
+                {
+                    CandidateStudentId = (int)q.candidateStudentId,
+                    NumberOfVotes = q.NumberOfVotes
+                });
+            }
+
+            return electionResults;
+        }
+
+        public ElectionResult GetElectionResultForDepartmentRepresentative(int voterId)
         {
             try
             {
@@ -29,26 +50,6 @@ namespace Election_System.Repositories
             }
         }
 
-        public List<ElectionResultResponse> GetElectionResultsForDepartmentRepresentative(int departmentId)
-        {
-            var query = GetDataContext().electionResults.
-                Include(es => es.CandidateStudent).
-                Where(es => es.CandidateStudent.DepartmentId == departmentId).
-                GroupBy(es => es.CandidateStudentId ).
-                Select(g => new { candidateStudentId = g.Key, NumberOfVotes = g.Count() });
-
-            List<ElectionResultResponse> electionResults = new List<ElectionResultResponse>();
-            foreach (var q in query)
-            {
-                electionResults.Add(new ElectionResultResponse()
-                {
-                    CandidateStudentId = (int) q.candidateStudentId,
-                    NumberOfVotes = q.NumberOfVotes
-                });
-            }
-
-            return electionResults;
-        }
 
     }
 

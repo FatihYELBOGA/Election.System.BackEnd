@@ -33,5 +33,11 @@ namespace Election_System.Controllers
             return (Role[])Enum.GetValues(typeof(Role));
         }
 
+        [HttpGet("/document-types")]
+        public Role[] GetDocumentTypes()
+        {
+            return (Role[])Enum.GetValues(typeof(DocumentType));
+        }
+
     }
 }

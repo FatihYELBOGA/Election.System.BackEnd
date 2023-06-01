@@ -7,7 +7,7 @@ namespace Election_System.Repositories
     public interface IElectionRepository : IGenericRepository<ElectionResult>
     {
         public List<ElectionResultResponse> GetElectionResultsForDepartmentRepresentative(int departmentId);
-        public ElectionResult GetElectionResultForDepartmentRepresenatative(int voterId);
+        public ElectionResult GetElectionResultForDepartmentRepresentative(int voterId);
 
     }
 

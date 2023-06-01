@@ -10,7 +10,6 @@ namespace Election_System.DTO.Responses
         public ControlStatus ControlStatus { get; set; }
         public ProcessType Process { get; set; }
         public DocumentType Document { get; set; }
-        public StudentResponse Student { get; set; }
 
         public DocumentResponse(Document document)
         {
@@ -19,7 +18,6 @@ namespace Election_System.DTO.Responses
             ControlStatus = document.ControlStatus;
             Process = document.ProcessType;
             Document = document.DocumentType;
-            Student = new StudentResponse(document.Student);
         }
 
     }

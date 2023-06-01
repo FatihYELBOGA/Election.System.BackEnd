@@ -21,28 +21,22 @@ namespace Election_System.Controllers
             return _documentService.GetById(id);
         }
 
-        [HttpGet("/documents/department-candidacy/{studentId}")]
-        public DocumentResponse GetDeparmentCandidacyDocumentByStudentId(int studentId)
+        [HttpGet("/documents/students-have-department-candidacy-documents")]
+        public List<StudentResponse> GetStudentsHaveDepartmentCandidacyDocuments()
         {
-            return _documentService.GetDeparmentCandidacyDocumentByStudentId(studentId);
+            return _documentService.GetStudentsHaveDepartmentCandidacyDocuments();
+        }
+
+        [HttpGet("/documents/department-candidacy/{studentId}")]
+        public List<DocumentResponse> GetDeparmentCandidacyDocumentByStudentId(int studentId)
+        {
+            return _documentService.GetDeparmentCandidacyDocumentsByStudentId(studentId);
         }
 
         [HttpGet("/documents/qualification-control/{studentId}")]
-        public DocumentResponse GetQualificationControlDocumentByStudentId(int studentId)
+        public List<DocumentResponse> GetQualificationControlDocumentByStudentId(int studentId)
         {
-            return _documentService.GetQualificationControlDocumentByStudentId(studentId);
-        }
-
-        [HttpGet("/documents/department-candidacies")]
-        public List<DocumentResponse> GetDeparmentCandidacyDocuments()
-        {
-            return _documentService.GetDepartmentCandidacyDocuments();
-        }
-
-        [HttpGet("/documents/qualification-controls")]
-        public List<DocumentResponse> GetQualificationControlDocuments()
-        {
-            return _documentService.GetQualificationControlDocuments();
+            return _documentService.GetQualificationControlDocumentsByStudentId(studentId);
         }
 
         [HttpPost("/documents")]

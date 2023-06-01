@@ -21,36 +21,31 @@ namespace Election_System.Services
             return new DocumentResponse(_documentRepository.GetById(id));
         }
 
-        public List<DocumentResponse> GetDepartmentCandidacyDocuments()
+        public List<StudentResponse> GetStudentsHaveDepartmentCandidacyDocuments()
+        {
+            return _documentRepository.GetStudentsHaveDepartmentCandidacyDocuments();
+        }
+
+        public List<DocumentResponse> GetDeparmentCandidacyDocumentsByStudentId(int studentId)
         {
             List<DocumentResponse> documentResponses = new List<DocumentResponse>();
-            foreach (var document in _documentRepository.GetDepartmentCandidacyDocuments())
+            foreach (var doc in _documentRepository.GetDeparmentCandidacyDocumentsByStudentId(studentId))
             {
-                documentResponses.Add(new DocumentResponse(document));
+                documentResponses.Add(new DocumentResponse(doc));
             }
 
             return documentResponses;
         }
 
-        public List<DocumentResponse> GetQualificationControlDocuments()
+        public List<DocumentResponse> GetQualificationControlDocumentsByStudentId(int studentId)
         {
             List<DocumentResponse> documentResponses = new List<DocumentResponse>();
-            foreach (var document in _documentRepository.GetQualificationControlDocuments())
+            foreach (var doc in _documentRepository.GetQualificationControlDocumentsByStudentId(studentId))
             {
-                documentResponses.Add(new DocumentResponse(document));
+                documentResponses.Add(new DocumentResponse(doc));
             }
 
             return documentResponses;
-        }
-
-        public DocumentResponse GetDeparmentCandidacyDocumentByStudentId(int studentId)
-        {
-            return new DocumentResponse(_documentRepository.GetDeparmentCandidacyDocumentByStudentId(studentId));
-        }
-
-        public DocumentResponse GetQualificationControlDocumentByStudentId(int studentId)
-        {
-            return new DocumentResponse(_documentRepository.GetQualificationControlDocumentByStudentId(studentId));
         }
 
         public DocumentResponse Add(DocumentRequest documentRequest)

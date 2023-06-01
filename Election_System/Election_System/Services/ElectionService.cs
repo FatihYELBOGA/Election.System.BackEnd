@@ -44,7 +44,7 @@ namespace Election_System.Services
 
         public StudentResponse GetCandidateForDepartmentRepresentative(int voterId)
         {
-            ElectionResult electionResult = _electionRepository.GetElectionResultForDepartmentRepresenatative(voterId);
+            ElectionResult electionResult = _electionRepository.GetElectionResultForDepartmentRepresentative(voterId);
             if (electionResult != null)
             {
                 return new StudentResponse(electionResult.CandidateStudent);

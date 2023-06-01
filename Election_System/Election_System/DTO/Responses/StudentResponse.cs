@@ -1,5 +1,6 @@
 ﻿using Election_System.Enumerations;
 using Election_System.Models;
+using System.Text.Json.Serialization;
 
 namespace Election_System.DTO.Responses
 {
@@ -14,6 +15,8 @@ namespace Election_System.DTO.Responses
         public Gender? Gender { get; set; }
         public float GPA { get; set; }
         public DepartmentResponse Department { get; set; }
+
+        public StudentResponse() { }
 
         public StudentResponse(Student student) 
         {

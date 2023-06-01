@@ -6,10 +6,9 @@ namespace Election_System.Repositories
 {
     public interface IDocumentRepository : IGenericRepository<Document>
     {
-        Document GetDeparmentCandidacyDocumentByStudentId(int studentId);
-        Document GetQualificationControlDocumentByStudentId(int studentId);
-        List<Document> GetDepartmentCandidacyDocuments();
-        List<Document> GetQualificationControlDocuments();
+        List<StudentResponse> GetStudentsHaveDepartmentCandidacyDocuments();
+        List<Document> GetDeparmentCandidacyDocumentsByStudentId(int studentId);
+        List<Document> GetQualificationControlDocumentsByStudentId(int studentId);
 
     }
 
