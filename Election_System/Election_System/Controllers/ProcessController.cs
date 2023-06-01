@@ -28,6 +28,18 @@ namespace Election_System.Controllers
             return _processService.GetActives();
         }
 
+        [HttpGet("/processes/started-department-candidacy")]
+        public ProcessResponse GetStartedDepartmentCandidacy()
+        {
+            return _processService.GetStartedDepartmentCandidacy();
+        }
+
+        [HttpGet("/processes/will-start-department-candidacy")]
+        public ProcessResponse GetWillStartDepartmentCandidacy()
+        {
+            return _processService.GetWillStartDepartmentCandidacy();
+        }
+
         [HttpPost("/processes")]
         public ProcessResponse Add([FromBody] ProcessRequest processRequest)
         {

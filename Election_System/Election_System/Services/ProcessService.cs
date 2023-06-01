@@ -1,5 +1,6 @@
 ﻿using Election_System.DTO.Requests;
 using Election_System.DTO.Responses;
+using Election_System.Enumerations;
 using Election_System.Models;
 using Election_System.Repositories;
 
@@ -36,14 +37,33 @@ namespace Election_System.Services
             return processResponses;
         }
 
+        public ProcessResponse GetStartedDepartmentCandidacy()
+        {
+            return new ProcessResponse(_processRepository.GetStartedDepartmentCandidacy());
+        }
+
+        public ProcessResponse GetWillStartDepartmentCandidacy()
+        {
+            return new ProcessResponse(_processRepository.GetWillStartDepartmentCandidacy());
+        }
+
         public ProcessResponse Add(ProcessRequest processRequest)
         {
+            ProcessType process = processRequest.ProcessType;
+            foreach (var p in _processRepository.GetAll())
+            {
+                if(p.ProcessType == process)
+                {
+                    return null;
+                }
+            }
+
             string[] startDate = processRequest.StartDate.Split('-');
             string[] endDate = processRequest.EndDate.Split('-');
 
             Process addedProcess = _processRepository.Add(new Process()
             {
-                ProcessType = processRequest.ProcessType,
+                ProcessType = process,
                 StartDate = new DateTime((int)Int64.Parse(startDate[0]), (int)Int64.Parse(startDate[1]), (int)Int64.Parse(startDate[2])),
                 EndDate = new DateTime((int)Int64.Parse(endDate[0]), (int)Int64.Parse(endDate[1]), (int)Int64.Parse(endDate[2])),
                 AdministrationId = processRequest.AdministratonId

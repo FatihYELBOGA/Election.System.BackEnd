@@ -10,7 +10,8 @@ namespace Election_System.Services
         public ProcessResponse Add(ProcessRequest processRequest);
         public ProcessResponse Update(int id, ProcessRequest processRequest);
         public bool Remove(int id);
-
+        ProcessResponse GetStartedDepartmentCandidacy();
+        ProcessResponse GetWillStartDepartmentCandidacy();
     }
 
 }

@@ -1,7 +1,7 @@
 ﻿using Election_System.Configurations;
 using Election_System.Generics;
 using Election_System.Models;
-using Microsoft.EntityFrameworkCore;
+using Election_System.Enumerations;
 
 namespace Election_System.Repositories
 {
@@ -15,8 +15,22 @@ namespace Election_System.Repositories
         public List<Process> GetActives()
         {
             return GetDataContext().processes.
-                Where(a => DateTime.Compare(a.StartDate, DateTime.Now.Date) < 0 && DateTime.Compare(a.EndDate, DateTime.Now.Date) > 0).
+                Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) < 0 && DateTime.Compare(p.EndDate, DateTime.Now.Date) > 0).
                 ToList();
+        }
+
+        public Process GetStartedDepartmentCandidacy()
+        {
+            return GetDataContext().processes.
+                Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) < 0 && DateTime.Compare(p.EndDate, DateTime.Now.Date) > 0 && p.ProcessType == ProcessType.DEPARTMENT_CANDIDACY).
+                FirstOrDefault();
+        }
+
+        public Process GetWillStartDepartmentCandidacy()
+        {
+            return GetDataContext().processes.
+                Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) > 0 && p.ProcessType == ProcessType.DEPARTMENT_CANDIDACY).
+                FirstOrDefault();
         }
 
     }
