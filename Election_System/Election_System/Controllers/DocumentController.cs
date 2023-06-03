@@ -1,5 +1,6 @@
 ﻿using Election_System.DTO.Requests;
 using Election_System.DTO.Responses;
+using Election_System.Enumerations;
 using Election_System.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,6 +44,18 @@ namespace Election_System.Controllers
         public DocumentResponse Add([FromForm] DocumentRequest documentRequest)
         {
             return _documentService.Add(documentRequest);
+        }
+
+        [HttpPut("/document/update-control-status/{id}")]
+        public DocumentResponse UpdateControlStatus(int id, ControlStatus controlStatus)
+        {
+            return _documentService.UpdateControlStatus(id, controlStatus);
+        }
+
+        [HttpPut("/documents/{id}")]
+        public DocumentResponse Update(int id, IFormFile file)
+        {
+            return _documentService.Update(id, file);
         }
 
         [HttpDelete("/documents/{id}")]

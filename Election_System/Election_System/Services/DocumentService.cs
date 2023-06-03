@@ -52,7 +52,6 @@ namespace Election_System.Services
         {
             Models.File newFile = null;
             long fileSize = documentRequest.File.Length;
-
             if (fileSize > 0)
             {
                 using (var stream = new MemoryStream())
@@ -62,7 +61,7 @@ namespace Election_System.Services
 
                     newFile = new Models.File()
                     {
-                        Name = documentRequest.File.Name,
+                        Name = documentRequest.File.FileName,
                         Type = documentRequest.File.ContentType,
                         Content = bytes
                     };
@@ -85,6 +84,31 @@ namespace Election_System.Services
             _fileRepository.Update(file);
 
             return new DocumentResponse(_documentRepository.GetById(document.Id));
+        }
+
+        public DocumentResponse UpdateControlStatus(int id, ControlStatus controlStatus)
+        {
+            Document document = _documentRepository.GetById(id);
+            document.ControlStatus = controlStatus;
+            return new DocumentResponse(_documentRepository.Update(document));
+        }
+
+        public DocumentResponse Update(int id, IFormFile file)
+        {
+            Document document = _documentRepository.GetById(id); 
+
+            long fileSize = file.Length;
+            if (fileSize > 0)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    file.CopyTo(stream);
+                    var bytes = stream.ToArray();
+                    document.File.Content = bytes;
+                }
+            }
+
+            return new DocumentResponse(_documentRepository.Update(document));
         }
 
         public bool Remove(int id)

@@ -1,5 +1,7 @@
 ﻿using Election_System.DTO;
 using Election_System.DTO.Responses;
+using Election_System.Enumerations;
+using Election_System.Models;
 using Election_System.Repositories;
 
 namespace Election_System.Services
@@ -7,32 +9,49 @@ namespace Election_System.Services
     public class CandidateService : ICandidateService
     {   
         private readonly ICandidateRepository _candidateRepository;
-        public CandidateService(ICandidateRepository candidateRepository)
+        private readonly IStudentRepository _studentRepository;
+        public CandidateService(ICandidateRepository candidateRepository, IStudentRepository studentRepository)
         {
             _candidateRepository = candidateRepository;
+            _studentRepository = studentRepository; 
         }
 
-        public List<CandidateResponse> GetAll()
+
+        public List<StudentResponse> GetAll(ProcessType process)
         {
-            List<CandidateResponse> candidateResponses = new List<CandidateResponse>();
-            foreach (var candidate in _candidateRepository.GetAllCandidates())
+            List<StudentResponse> studentResponses = new List<StudentResponse>();
+            foreach (var s in _candidateRepository.GetAll(process))
             {
-                candidateResponses.Add(new CandidateResponse(candidate));
+                studentResponses.Add(new StudentResponse(s.CandidateStudent));
             }
 
-            return candidateResponses;
+            return studentResponses;
         }
 
-        public List<CandidateResponse> GetCandidatesByDepartmentId(int id)
+        public StudentResponse Add(int id, ProcessType process)
         {
-            List<CandidateResponse> candidateResponses = new List<CandidateResponse>();
-            foreach (var candidate in _candidateRepository.GetCandidatesByDepartmentId(id))
+            Candidate addedCandidate = _candidateRepository.Add(new Candidate()
             {
-                candidateResponses.Add(new CandidateResponse(candidate));
-            }
+                CandidateStudentId = id,
+                ProcessType = process
+            });
 
-            return candidateResponses;
+            return new StudentResponse(_studentRepository.GetById((int) addedCandidate.CandidateStudentId));
+        }
+
+        public bool Remove(int id)
+        {
+            try
+            {
+                _candidateRepository.DeleteById(id);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
     }
+
 }

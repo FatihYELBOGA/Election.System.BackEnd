@@ -13,23 +13,15 @@ namespace Election_System.Repositories
 
         }
 
-        public List<Candidate> GetAllCandidates()
+        public List<Candidate> GetAll(ProcessType process)
         {
             return GetDataContext().candidates.
-                Include(c => c.CandidateStudent).
-                ThenInclude(s => s.Department).
-                ThenInclude(d => d.Faculty).
+                Where(p => p.ProcessType == process).
+                Include(p => p.CandidateStudent).
+                    ThenInclude(s => s.Department).
+                    ThenInclude(d => d.Faculty).
                 ToList();
         }
 
-        public List<Candidate> GetCandidatesByDepartmentId(int departmentId)
-        {
-            return GetDataContext().candidates.
-                Include(c => c.CandidateStudent).
-                ThenInclude(s => s.Department).
-                ThenInclude(d => d.Faculty).
-                Where(c => c.CandidateStudent.DepartmentId == departmentId && c.ProcessType == ProcessType.DEPARTMENT_REPRESENTATIVE).
-                ToList();
-        }
     }
 }

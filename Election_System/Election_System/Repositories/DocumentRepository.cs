@@ -19,9 +19,6 @@ namespace Election_System.Repositories
             return GetDataContext().documents.
                 Where(d => d.Id == id).
                 Include(d => d.File).
-                Include(d => d.Student).
-                ThenInclude(s => s.Department).
-                ThenInclude(d => d.Faculty).
                 FirstOrDefault();
         }
 

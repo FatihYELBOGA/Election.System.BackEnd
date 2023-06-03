@@ -1,6 +1,8 @@
 ﻿using Election_System.DTO.Responses;
 using Election_System.Services;
 using Microsoft.AspNetCore.Mvc;
+using Election_System.Models;
+using Election_System.Enumerations;
 
 namespace Election_System.Controllers
 {
@@ -15,15 +17,21 @@ namespace Election_System.Controllers
         }
 
         [HttpGet("/candidates")]
-        public List<CandidateResponse> GetAll()
+        public List<StudentResponse> GetAll(ProcessType process)
         {
-            return _candidateService.GetAll();
+            return _candidateService.GetAll(process);
         }
 
-        [HttpGet("/candidates/{departmentId}")]
-        public List<CandidateResponse> GetCandidatesByDepartmentId(int departmentId)
+        [HttpPost("/candidates/id")]
+        public StudentResponse Add(int id, ProcessType process)
         {
-            return _candidateService.GetCandidatesByDepartmentId(departmentId);
+            return _candidateService.Add(id, process);
+        }
+
+        [HttpDelete("/candidates/{id}")]
+        public bool Remove(int id)
+        {
+            return _candidateService.Remove(id);
         }
 
     }

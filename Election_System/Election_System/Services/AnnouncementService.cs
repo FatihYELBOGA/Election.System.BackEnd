@@ -48,8 +48,8 @@ namespace Election_System.Services
             {
                 Title = announcementRequest.Title,
                 Description = announcementRequest.Description,
-                StartDate = new DateTime((int)Int64.Parse(startDate[0]), (int)Int64.Parse(startDate[1]), (int)Int64.Parse(startDate[2])),
-                EndDate = new DateTime((int)Int64.Parse(endDate[0]), (int)Int64.Parse(endDate[1]), (int)Int64.Parse(endDate[2])),
+                StartDate = new DateTime((int)Int64.Parse(startDate[0]), (int)Int64.Parse(startDate[1]), (int)Int64.Parse(startDate[2]), (int)Int64.Parse(startDate[3]), (int)Int64.Parse(startDate[4]), (int)Int64.Parse(startDate[5])),
+                EndDate = new DateTime((int)Int64.Parse(endDate[0]), (int)Int64.Parse(endDate[1]), (int)Int64.Parse(endDate[2]), (int)Int64.Parse(endDate[3]), (int)Int64.Parse(endDate[4]), (int)Int64.Parse(endDate[5])),
                 AdministrationId = announcementRequest.AdministrationId
             });
 
@@ -66,8 +66,8 @@ namespace Election_System.Services
                 Id = id,
                 Title = announcementRequest.Title,
                 Description = announcementRequest.Description,
-                StartDate = new DateTime((int)Int64.Parse(startDate[0]), (int)Int64.Parse(startDate[1]), (int)Int64.Parse(startDate[2])),
-                EndDate = new DateTime((int)Int64.Parse(endDate[0]), (int)Int64.Parse(endDate[1]), (int)Int64.Parse(endDate[2])),
+                StartDate = new DateTime((int)Int64.Parse(startDate[0]), (int)Int64.Parse(startDate[1]), (int)Int64.Parse(startDate[2]), (int)Int64.Parse(startDate[3]), (int)Int64.Parse(startDate[4]), (int)Int64.Parse(startDate[5])),
+                EndDate = new DateTime((int)Int64.Parse(endDate[0]), (int)Int64.Parse(endDate[1]), (int)Int64.Parse(endDate[2]), (int)Int64.Parse(endDate[3]), (int)Int64.Parse(endDate[4]), (int)Int64.Parse(endDate[5])),
                 AdministrationId = announcementRequest.AdministrationId
             };
 
