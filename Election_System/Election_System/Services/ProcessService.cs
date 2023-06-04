@@ -37,14 +37,26 @@ namespace Election_System.Services
             return processResponses;
         }
 
-        public ProcessResponse GetStartedDepartmentCandidacy()
+        public ProcessResponse GetStartedProcess(ProcessType process)
         {
-            return new ProcessResponse(_processRepository.GetStartedDepartmentCandidacy());
+            Process proc = _processRepository.GetStartedDepartmentCandidacy(process);
+            if (proc != null)
+            {
+                return new ProcessResponse(proc);
+            }
+
+            return null;
         }
 
-        public ProcessResponse GetWillStartDepartmentCandidacy()
+        public ProcessResponse GetWillStartProcess(ProcessType process)
         {
-            return new ProcessResponse(_processRepository.GetWillStartDepartmentCandidacy());
+            Process proc = _processRepository.GetWillStartDepartmentCandidacy(process);
+            if (proc != null)
+            {
+                return new ProcessResponse(proc);
+            }
+
+            return null;
         }
 
         public ProcessResponse Add(ProcessRequest processRequest)

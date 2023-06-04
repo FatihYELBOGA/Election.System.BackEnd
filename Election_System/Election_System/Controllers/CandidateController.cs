@@ -22,7 +22,7 @@ namespace Election_System.Controllers
             return _candidateService.GetAll(process);
         }
 
-        [HttpPost("/candidates/id")]
+        [HttpPost("/candidates/{id}")]
         public StudentResponse Add(int id, ProcessType process)
         {
             return _candidateService.Add(id, process);

@@ -1,5 +1,6 @@
 ﻿using Election_System.DTO.Requests;
 using Election_System.DTO.Responses;
+using Election_System.Enumerations;
 
 namespace Election_System.Services
 {
@@ -7,11 +8,12 @@ namespace Election_System.Services
     {
         public List<ProcessResponse> GetAll();
         public List<ProcessResponse> GetActives();
+        ProcessResponse GetStartedProcess(ProcessType process);
+        ProcessResponse GetWillStartProcess(ProcessType process);
         public ProcessResponse Add(ProcessRequest processRequest);
         public ProcessResponse Update(int id, ProcessRequest processRequest);
         public bool Remove(int id);
-        ProcessResponse GetStartedDepartmentCandidacy();
-        ProcessResponse GetWillStartDepartmentCandidacy();
+
     }
 
 }

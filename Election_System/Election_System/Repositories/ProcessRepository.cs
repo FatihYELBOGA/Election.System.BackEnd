@@ -19,17 +19,17 @@ namespace Election_System.Repositories
                 ToList();
         }
 
-        public Process GetStartedDepartmentCandidacy()
+        public Process GetStartedDepartmentCandidacy(ProcessType process)
         {
             return GetDataContext().processes.
-                Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) < 0 && DateTime.Compare(p.EndDate, DateTime.Now.Date) > 0 && p.ProcessType == ProcessType.DEPARTMENT_CANDIDACY).
+                Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) < 0 && DateTime.Compare(p.EndDate, DateTime.Now.Date) > 0 && p.ProcessType == process).
                 FirstOrDefault();
         }
 
-        public Process GetWillStartDepartmentCandidacy()
+        public Process GetWillStartDepartmentCandidacy(ProcessType process)
         {
             return GetDataContext().processes.
-                Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) > 0 && p.ProcessType == ProcessType.DEPARTMENT_CANDIDACY).
+                Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) > 0 && p.ProcessType == process).
                 FirstOrDefault();
         }
 

@@ -1,5 +1,6 @@
 ﻿using Election_System.DTO.Requests;
 using Election_System.DTO.Responses;
+using Election_System.Enumerations;
 using Election_System.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,16 +29,16 @@ namespace Election_System.Controllers
             return _processService.GetActives();
         }
 
-        [HttpGet("/processes/started-department-candidacy")]
-        public ProcessResponse GetStartedDepartmentCandidacy()
+        [HttpGet("/processes/started-process")]
+        public ProcessResponse GetStartedProcess(ProcessType process)
         {
-            return _processService.GetStartedDepartmentCandidacy();
+            return _processService.GetStartedProcess(process);
         }
 
-        [HttpGet("/processes/will-start-department-candidacy")]
-        public ProcessResponse GetWillStartDepartmentCandidacy()
+        [HttpGet("/processes/will-start-process")]
+        public ProcessResponse GetWillStartDepartmentCandidacy(ProcessType process)
         {
-            return _processService.GetWillStartDepartmentCandidacy();
+            return _processService.GetWillStartProcess(process);
         }
 
         [HttpPost("/processes")]

@@ -23,5 +23,14 @@ namespace Election_System.Repositories
                 ToList();
         }
 
+        public override void DeleteById(int id)
+        {
+            Candidate candidate = GetDataContext().candidates.
+                Where(c => c.CandidateStudentId == id).
+                FirstOrDefault();
+
+            DeleteByEntity(candidate);
+        }
+
     }
 }
