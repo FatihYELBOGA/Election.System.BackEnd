@@ -23,16 +23,16 @@ namespace Election_System.Controllers
             return _processService.GetAll();
         }
 
-        [HttpGet("/processes/active")]
-        public List<ProcessResponse> GetActives()
-        {
-            return _processService.GetActives();
-        }
-
         [HttpGet("/processes/started-process")]
         public ProcessResponse GetStartedProcess(ProcessType process)
         {
             return _processService.GetStartedProcess(process);
+        }
+
+        [HttpGet("/processes/starting-process")]
+        public ProcessResponse GetStartingProcess(ProcessType process)
+        {
+            return _processService.GetStartingProcess(process);
         }
 
         [HttpGet("/processes/will-start-process")]

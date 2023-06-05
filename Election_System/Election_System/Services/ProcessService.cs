@@ -36,10 +36,20 @@ namespace Election_System.Services
 
             return processResponses;
         }
-
         public ProcessResponse GetStartedProcess(ProcessType process)
         {
             Process proc = _processRepository.GetStartedDepartmentCandidacy(process);
+            if (proc != null)
+            {
+                return new ProcessResponse(proc);
+            }
+
+            return null;
+        }
+
+        public ProcessResponse GetStartingProcess(ProcessType process)
+        {
+            Process proc = _processRepository.GetStartingDepartmentCandidacy(process);
             if (proc != null)
             {
                 return new ProcessResponse(proc);

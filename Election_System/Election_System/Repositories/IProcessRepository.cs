@@ -8,6 +8,7 @@ namespace Election_System.Repositories
     {
         public List<Process> GetActives();
         public Process GetStartedDepartmentCandidacy(ProcessType process);
+        public Process GetStartingDepartmentCandidacy(ProcessType process);
         public Process GetWillStartDepartmentCandidacy(ProcessType process);
 
     }

@@ -9,6 +9,7 @@ namespace Election_System.Services
         public List<ProcessResponse> GetAll();
         public List<ProcessResponse> GetActives();
         ProcessResponse GetStartedProcess(ProcessType process);
+        ProcessResponse GetStartingProcess(ProcessType process);
         ProcessResponse GetWillStartProcess(ProcessType process);
         public ProcessResponse Add(ProcessRequest processRequest);
         public ProcessResponse Update(int id, ProcessRequest processRequest);

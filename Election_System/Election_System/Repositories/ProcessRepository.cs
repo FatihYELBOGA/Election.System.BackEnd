@@ -22,6 +22,13 @@ namespace Election_System.Repositories
         public Process GetStartedDepartmentCandidacy(ProcessType process)
         {
             return GetDataContext().processes.
+                Where(p => DateTime.Compare(p.EndDate, DateTime.Now.Date) < 0 && p.ProcessType == process).
+                FirstOrDefault();
+        }
+
+        public Process GetStartingDepartmentCandidacy(ProcessType process)
+        {
+            return GetDataContext().processes.
                 Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) < 0 && DateTime.Compare(p.EndDate, DateTime.Now.Date) > 0 && p.ProcessType == process).
                 FirstOrDefault();
         }
