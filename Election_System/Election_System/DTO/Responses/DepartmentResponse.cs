@@ -8,11 +8,17 @@ namespace Election_System.DTO.Responses
         public string Name { get; set; }
         public FacultyResponse Faculty { get; set; }
 
+        public DepartmentResponse() { }
+
         public DepartmentResponse(Department department)
         {
             Id = department.Id;
             Name = department.Name;
-            Faculty = new FacultyResponse(department.Faculty);
+
+            if(department.Faculty != null)
+            {
+                Faculty = new FacultyResponse(department.Faculty);
+            }
         }
 
     }

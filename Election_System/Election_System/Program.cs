@@ -52,6 +52,8 @@ builder.Services.AddTransient<IDocumentService, DocumentService>();
 builder.Services.AddTransient<IProcessRepository, ProcessRepository>();
 builder.Services.AddTransient<IProcessService, ProcessService>();
 builder.Services.AddTransient<IFileRepository, FileRepository>();
+builder.Services.AddTransient<IDepartmentService, DepartmentService>();
+builder.Services.AddTransient<IDepartmentRepository, DepartmentRepository>();
 
 var app = builder.Build();
 

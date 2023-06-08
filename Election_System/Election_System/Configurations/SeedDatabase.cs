@@ -109,6 +109,28 @@ namespace Election_System.Configurations
                 Role = Role.STUDENT,
                 Department = departments[1],
                 GPA = 3.4f
+            },
+            new Student()
+            {
+                Username = "ahmetyildirim@std.iyte.edu.tr",
+                Password = "ahmet123",
+                FirstName = "Ahmet",
+                LastName = "YILDIRIM",
+                Gender = Gender.MALE,
+                Role = Role.STUDENT,
+                Department = departments[0],
+                GPA = 3.3f
+            },
+            new Student()
+            {
+                Username = "berkangonulsever@std.iyte.edu.tr",
+                Password = "berkan123",
+                FirstName = "Berkan",
+                LastName = "GONULSEVER",
+                Gender = Gender.MALE,
+                Role = Role.STUDENT,
+                Department = departments[1],
+                GPA = 3.3f
             }
         };
 

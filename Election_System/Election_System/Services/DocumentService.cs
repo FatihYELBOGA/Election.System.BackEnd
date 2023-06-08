@@ -104,9 +104,12 @@ namespace Election_System.Services
                 {
                     file.CopyTo(stream);
                     var bytes = stream.ToArray();
+                    document.File.Name = file.FileName;
+                    document.File.Type = file.ContentType;
                     document.File.Content = bytes;
                 }
             }
+            document.ControlStatus = ControlStatus.WAITING;
 
             return new DocumentResponse(_documentRepository.Update(document));
         }
