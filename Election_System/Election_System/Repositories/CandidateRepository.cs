@@ -32,5 +32,9 @@ namespace Election_System.Repositories
             DeleteByEntity(candidate);
         }
 
+        public int RemoveAll()
+        {
+            return GetDataContext().Database.ExecuteSql($"DELETE FROM candidates");
+        }
     }
 }

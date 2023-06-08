@@ -67,6 +67,10 @@ namespace Election_System.Repositories
                 ToList();
         }
 
+        public int RemoveAll()
+        {
+            return GetDataContext().Database.ExecuteSql($"DELETE FROM files");
+        }
     }
 
 }

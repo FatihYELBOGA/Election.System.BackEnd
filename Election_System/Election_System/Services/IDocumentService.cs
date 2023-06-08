@@ -7,13 +7,14 @@ namespace Election_System.Services
     public interface IDocumentService
     {
         public DocumentResponse GetById(int id);
-        List<StudentResponse> GetStudentsHaveDepartmentCandidacyDocuments();
-        List<DocumentResponse> GetDeparmentCandidacyDocumentsByStudentId(int studentId);
-        List<DocumentResponse> GetQualificationControlDocumentsByStudentId(int studentId);
+        public List<StudentResponse> GetStudentsHaveDepartmentCandidacyDocuments();
+        public List<DocumentResponse> GetDeparmentCandidacyDocumentsByStudentId(int studentId);
+        public List<DocumentResponse> GetQualificationControlDocumentsByStudentId(int studentId);
         public DocumentResponse Add(DocumentRequest documentRequest);
-        DocumentResponse UpdateControlStatus(int id, ControlStatus controlStatus);
-        DocumentResponse Update(int id, IFormFile file);
-        bool Remove(int id);
+        public DocumentResponse UpdateControlStatus(int id, ControlStatus controlStatus);
+        public DocumentResponse Update(int id, IFormFile file);
+        public bool Remove(int id);
+        public int RemoveAll();
 
     }
 

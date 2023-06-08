@@ -53,6 +53,18 @@ namespace Election_System.Services
             return null;
         }
 
+        public int RemoveAll()
+        {
+            try
+            {
+                return _electionRepository.RemoveAll();
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+
     }
 
 }

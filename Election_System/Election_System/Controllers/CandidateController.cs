@@ -34,5 +34,11 @@ namespace Election_System.Controllers
             return _candidateService.Remove(id);
         }
 
+        [HttpDelete("/candidates")]
+        public int RemoveAll()
+        {
+            return _candidateService.RemoveAll();
+        }
+
     }
 }

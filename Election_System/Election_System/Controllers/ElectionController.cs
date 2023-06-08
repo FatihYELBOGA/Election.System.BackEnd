@@ -16,22 +16,28 @@ namespace Election_System.Controllers
             _electionService = electionService;
         }
 
-        [HttpPost("/election/vote-for-department-representative")]
+        [HttpPost("/elections/vote-for-department-representative")]
         public StudentResponse AddVoteForDepartmentRepresentative([FromBody] VoteOfDepartmentRepresentativeRequest vote)
         {
             return _electionService.AddVoteForDepartmentRepresentative(vote);
         }
 
-        [HttpGet("/election/results/{departmentId}")]
+        [HttpGet("/elections/results/{departmentId}")]
         public List<ElectionResultResponse> GetElectionResultsForDepartmentRepresentative(int departmentId)
         {
             return _electionService.GetElectionResultsForDepartmentRepresentative(departmentId);
         }
 
-        [HttpGet("/election/{voterId}")]
+        [HttpGet("/elections/{voterId}")]
         public StudentResponse GetCandidateForDepartmentRepresentative(int voterId)
         {
             return _electionService.GetCandidateForDepartmentRepresentative(voterId);
+        }
+
+        [HttpDelete("/elections")]
+        public int RemoveAll()
+        {
+            return _electionService.RemoveAll();
         }
 
     }

@@ -5,9 +5,11 @@ namespace Election_System.Services
 {
     public interface ICandidateService
     {
-        List<StudentResponse> GetAll(ProcessType process);
-        StudentResponse Add(int id, ProcessType process);
-        bool Remove(int id);
+        public List<StudentResponse> GetAll(ProcessType process);
+        public StudentResponse Add(int id, ProcessType process);
+        public bool Remove(int id);
+        public int RemoveAll();
 
     }
+
 }

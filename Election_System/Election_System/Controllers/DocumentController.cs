@@ -64,6 +64,12 @@ namespace Election_System.Controllers
             return _documentService.Remove(id);
         }
 
+        [HttpDelete("/documents")]
+        public int RemoveAll()
+        {
+            return _documentService.RemoveAll();
+        }
+
     }
 
 }

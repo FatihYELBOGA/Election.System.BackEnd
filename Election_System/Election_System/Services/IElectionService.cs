@@ -8,6 +8,7 @@ namespace Election_System.Services
         public StudentResponse AddVoteForDepartmentRepresentative(VoteOfDepartmentRepresentativeRequest vote);
         public List<ElectionResultResponse> GetElectionResultsForDepartmentRepresentative(int departmentId);
         public StudentResponse GetCandidateForDepartmentRepresentative(int candidateId);
+        public int RemoveAll();
 
     }
 

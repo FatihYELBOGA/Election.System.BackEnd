@@ -9,6 +9,7 @@ namespace Election_System.Repositories
         List<StudentResponse> GetStudentsHaveDepartmentCandidacyDocuments();
         List<Document> GetDeparmentCandidacyDocumentsByStudentId(int studentId);
         List<Document> GetQualificationControlDocumentsByStudentId(int studentId);
+        public int RemoveAll();
 
     }
 

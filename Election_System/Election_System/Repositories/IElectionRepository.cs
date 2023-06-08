@@ -8,6 +8,7 @@ namespace Election_System.Repositories
     {
         public List<ElectionResultResponse> GetElectionResultsForDepartmentRepresentative(int departmentId);
         public ElectionResult GetElectionResultForDepartmentRepresentative(int voterId);
+        public int RemoveAll();
 
     }
 

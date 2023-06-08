@@ -118,12 +118,24 @@ namespace Election_System.Services
         {
             try
             {
-                _fileRepository.DeleteById(_documentRepository.GetById(id).Id);
+                _fileRepository.DeleteById(_documentRepository.GetById(id).File.Id);
                 return true;
             }
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+        public int RemoveAll()
+        {
+            try
+            {
+                return _documentRepository.RemoveAll();
+            }
+            catch (Exception ex)
+            {
+                return -1;
             }
         }
 
