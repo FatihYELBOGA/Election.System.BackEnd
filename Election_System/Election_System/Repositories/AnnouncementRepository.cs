@@ -14,7 +14,7 @@ namespace Election_System.Repositories
         public List<Announcement> GetActives()
         {
             return GetDataContext().announcements.
-                Where(a => DateTime.Compare(a.StartDate,DateTime.Now.Date)<0 && DateTime.Compare(a.EndDate,DateTime.Now.Date)>0).
+                Where(a => DateTime.Compare(a.StartDate,DateTime.Now)<0 && DateTime.Compare(a.EndDate,DateTime.Now)>0).
                 ToList();
         }
 

@@ -22,21 +22,25 @@ namespace Election_System.Repositories
         public Process GetStartedDepartmentCandidacy(ProcessType process)
         {
             return GetDataContext().processes.
-                Where(p => DateTime.Compare(p.EndDate, DateTime.Now.Date) < 0 && p.ProcessType == process).
+                Where(p => DateTime.Compare(p.EndDate, DateTime.Now) < 0 && p.ProcessType == process).
                 FirstOrDefault();
         }
 
         public Process GetStartingDepartmentCandidacy(ProcessType process)
         {
             return GetDataContext().processes.
-                Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) < 0 && DateTime.Compare(p.EndDate, DateTime.Now.Date) > 0 && p.ProcessType == process).
+                Where(p => DateTime.Compare(p.StartDate, DateTime.Now) < 0 && DateTime.Compare(p.EndDate, DateTime.Now.Date) > 0 && p.ProcessType == process).
                 FirstOrDefault();
         }
 
         public Process GetWillStartDepartmentCandidacy(ProcessType process)
         {
+            foreach (var p in GetDataContext().processes)
+            {
+                int a = DateTime.Compare(p.StartDate, DateTime.Now);
+            }
             return GetDataContext().processes.
-                Where(p => DateTime.Compare(p.StartDate, DateTime.Now.Date) > 0 && p.ProcessType == process).
+                Where(p => (DateTime.Compare(p.StartDate, DateTime.Now) > 0) && (p.ProcessType == process)).
                 FirstOrDefault();
         }
 
