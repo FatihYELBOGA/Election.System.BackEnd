@@ -65,7 +65,6 @@ namespace Election_System.Services
                         Type = documentRequest.File.ContentType,
                         Content = bytes
                     };
-
                 }
             }
 
